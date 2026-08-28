@@ -291,6 +291,23 @@ test('stage URLs restore state, titles, history, focus, and announcements', asyn
   await expect(page.getByRole('heading', { name: 'List assets and owners.' })).toBeVisible();
 });
 
+test('every demo route uses a product-first title and matching share metadata', async ({ page }) => {
+  const titles: Record<string, string> = {
+    engagement: 'Closeout Kit demo — describe the finished project',
+    assets: 'Closeout Kit demo — list assets and owners',
+    'access-tasks': 'Closeout Kit demo — confirm account changes',
+    support: 'Closeout Kit demo — set support dates',
+    acknowledgement: 'Closeout Kit demo — collect a client receipt',
+    export: 'Closeout Kit demo — download the client packet'
+  };
+  for (const [stage, title] of Object.entries(titles)) {
+    await openDemo(page, stage);
+    await expect(page).toHaveTitle(title);
+    await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', title);
+    await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute('content', title);
+  }
+});
+
 test('metadata, shared links, and the styled 404 are complete', async ({ page }) => {
   for (const route of ['/', '/privacy/', '/terms/', '/demo']) {
     await page.goto(route);
@@ -336,8 +353,10 @@ test('landing headings and workflow actions name their destinations', async ({ p
 });
 
 test('all app routes pass serious accessibility checks and keyboard landmarks', async ({ page }) => {
-  for (const stage of ['engagement', 'assets', 'access-tasks', 'support', 'acknowledgement', 'export']) {
-    await openDemo(page, stage);
+  const routes = ['/', '/privacy/', '/terms/', '/not-a-real-route', ...['engagement', 'assets', 'access-tasks', 'support', 'acknowledgement', 'export'].map((stage) => `/demo?stage=${stage}`)];
+  for (const route of routes) {
+    await page.goto(route);
+    if (route.startsWith('/demo')) await expect(page.getByText('Demo — sample data, nothing is saved')).toBeVisible();
     const results = await new AxeBuilder({ page }).analyze();
     expect(results.violations.filter((issue) => ['serious', 'critical'].includes(issue.impact ?? ''))).toEqual([]);
     await expect(page.locator('h1')).toHaveCount(1);
