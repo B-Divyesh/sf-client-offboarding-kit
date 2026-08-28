@@ -26,7 +26,7 @@ Local source-tree results:
 
 ```text
 npm test
-  PASS — 9 unit/config tests
+  PASS — 10 unit/config tests
   PASS — production TypeScript/Vite build
   PASS — 16 Chromium integration/browser tests
 
@@ -46,7 +46,7 @@ Lighthouse 12.8.2 against production preview
   Accessibility 100
   Best Practices 100
   SEO 100
-  FCP 1.1 s · LCP 1.2 s · CLS 0 · TBT 0 ms
+  FCP 1.1 s · LCP 1.4 s · CLS 0 · TBT 0 ms
 ```
 
 Evidence:
@@ -70,3 +70,5 @@ npm run build
 ## Known gaps
 
 None in the reviewed scope. Studio remains intentionally absent until its Sociobot billing product is enabled.
+
+The first live audit found that precaching the intentional `/404.html` response prevented service-worker installation. The URL was removed from precache, a regression test was added, and the site was redeployed before handoff.

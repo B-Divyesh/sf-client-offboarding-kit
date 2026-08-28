@@ -27,4 +27,9 @@ describe('production delivery configuration', () => {
     const routes = config.routes.map((route: { route: string }) => route.route);
     expect(routes).toEqual(expect.arrayContaining(['/demo', '/packet/engagement', '/packet/assets', '/packet/access-tasks', '/packet/support', '/packet/acknowledgement', '/packet/export']));
   });
+
+  it('does not precache a URL that intentionally responds with 404', () => {
+    const serviceWorker = readFileSync('public/sw.js', 'utf8');
+    expect(serviceWorker).not.toContain("'/404.html'");
+  });
 });

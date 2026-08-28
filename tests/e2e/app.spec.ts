@@ -76,10 +76,11 @@ test('@claim:private-network uses no account, analytics, or cross-origin request
   const requests: string[] = [];
   page.on('request', (request) => requests.push(request.url()));
   await openDemo(page, 'assets');
+  const expectedOrigin = new URL(page.url()).origin;
   await page.getByRole('button', { name: /Continue/ }).click();
   await expect(page).toHaveURL(/stage=access-tasks/);
   expect(requests.length).toBeGreaterThan(0);
-  expect(requests.every((url) => new URL(url).origin === 'http://127.0.0.1:4173')).toBe(true);
+  expect(requests.every((url) => new URL(url).origin === expectedOrigin)).toBe(true);
   expect(await page.locator('input[type=email], input[name*=account], input[name*=login]').count()).toBe(0);
 });
 
@@ -184,6 +185,7 @@ test('@claim:recovery-boundary has no passphrase recovery path', async ({ page }
   const requests: string[] = [];
   page.on('request', (request) => requests.push(request.url()));
   await openDemo(page);
+  const expectedOrigin = new URL(page.url()).origin;
   await page.getByRole('button', { name: 'Start for real' }).click();
   await page.getByLabel('Create a packet passphrase').fill('kept-by-user-2026');
   await page.getByLabel('Confirm passphrase').fill('kept-by-user-2026');
@@ -192,7 +194,7 @@ test('@claim:recovery-boundary has no passphrase recovery path', async ({ page }
   await page.getByLabel('Packet passphrase').fill('wrong-passphrase-2026');
   await page.getByRole('button', { name: /Unlock your packet/ }).click();
   await expect(page.getByRole('alert')).toContainText('did not unlock');
-  expect(requests.every((url) => new URL(url).origin === 'http://127.0.0.1:4173')).toBe(true);
+  expect(requests.every((url) => new URL(url).origin === expectedOrigin)).toBe(true);
 });
 
 test('@claim:art-provenance ships the recorded original artwork', async ({ page }) => {

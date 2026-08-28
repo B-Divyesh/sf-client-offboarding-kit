@@ -1,4 +1,4 @@
-const VERSION = 'closeout-kit-v2';
+const VERSION = 'closeout-kit-v3';
 const SHELL = `${VERSION}-shell`;
 const RUNTIME = `${VERSION}-runtime`;
 const CORE = [
@@ -14,7 +14,6 @@ const CORE = [
   '/packet/export',
   '/privacy/',
   '/terms/',
-  '/404.html',
   '/manifest.webmanifest',
   '/robots.txt',
   '/art/harbor-closeout-960.webp',

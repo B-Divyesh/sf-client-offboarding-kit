@@ -72,8 +72,9 @@ Evidence screenshots are in `.factory/evidence/`. Automated names below refer to
 
 ## Shared verification
 
-- `npm test`: 9 unit/config tests and 16 Chromium tests pass.
+- `npm test`: 10 unit/config tests and 16 Chromium tests pass.
 - `npm run test:claims`: all 12 tagged claim tests pass.
-- Production preview Lighthouse: Performance 100, Accessibility 100, Best Practices 100, SEO 100; LCP 1.2 s, CLS 0, TBT 0 ms.
+- Production preview Lighthouse: Performance 100, Accessibility 100, Best Practices 100, SEO 100; LCP 1.4 s, CLS 0, TBT 0 ms.
+- The first live audit exposed `/404.html` in the service-worker precache. It was removed, covered by `does not precache a URL that intentionally responds with 404`, and redeployed.
 - Production bundles: JS 46.63 KB raw / 15.60 KB gzip; CSS 19.00 KB raw / 5.01 KB gzip.
 - `/opt/fleet/lib/verify-url.sh`: title, `lang`, one h1, main, image alt, button names, and console checks pass.
