@@ -8,8 +8,12 @@ const CORE = [
   '/privacy/',
   '/terms/',
   '/manifest.webmanifest',
+  '/robots.txt',
   '/art/harbor-closeout-960.webp',
   '/art/harbor-closeout-1536.webp',
+  '/art/harbor-closeout-960.avif',
+  '/art/harbor-closeout-1536.avif',
+  '/art/harbor-closeout-1536.jpg',
   '/icons/icon-192.png',
   '/icons/icon-512.png'
 ];

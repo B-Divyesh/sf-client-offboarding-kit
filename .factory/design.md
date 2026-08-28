@@ -52,7 +52,7 @@ Text and control pairs are selected for at least 4.5:1 contrast. Color is always
 
 ## Original asset plan and provenance
 
-- `public/art/harbor-closeout.webp` and responsive variants: original AI-generated cinematic environmental scene used on the empty/welcome state.
+- `public/art/harbor-closeout-{960,1536}.{avif,webp}` plus JPEG fallback: original AI-generated cinematic environmental scene used on the empty/welcome state.
 - App icons and interface symbols: hand-authored SVG/geometric CSS, created for this product.
 - Generated artwork is disclosed in the footer. No stock, brand, character, or third-party asset is used.
 

@@ -58,3 +58,53 @@ test('lays out at 390px without horizontal overflow', async ({ page }, testInfo)
   expect(overflow).toBe(false);
   await expect(page.getByRole('button', { name: /Start closeout/ })).toBeVisible();
 });
+
+test('completes acknowledgement and exports the client packet', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'chromium', 'one full export pass is sufficient');
+  await page.goto('/');
+  await page.getByLabel('Create a packet passphrase').fill('complete-route-2026');
+  await page.getByLabel('Confirm passphrase').fill('complete-route-2026');
+  await page.getByRole('button', { name: /Start closeout/ }).click();
+  await page.getByLabel('Project name').fill('Acme platform handoff');
+  await page.getByLabel('Client').fill('Acme Co');
+  await page.getByLabel('Prepared by').fill('Harbor Works');
+  await page.getByRole('button', { name: /Continue/ }).click();
+
+  await page.getByLabel('Asset or system').fill('Production repository');
+  await page.getByLabel('System-of-record link').fill('https://example.com/repository');
+  await page.getByLabel('Current owner').fill('Harbor Works');
+  await page.getByLabel('Destination owner').fill('Acme Co');
+  await page.getByRole('button', { name: /Add asset/ }).click();
+  await page.getByRole('button', { name: /Continue/ }).click();
+
+  await page.getByLabel('Action').fill('Transfer repository ownership');
+  await page.getByLabel('System').fill('Git host');
+  await page.getByLabel('Responsible person').fill('Ari Client');
+  await page.getByLabel('Due date').fill('2026-09-01');
+  await page.getByRole('button', { name: /Add action/ }).click();
+  await page.getByLabel(/I verified this change/).check();
+  await page.getByRole('button', { name: 'Mark complete' }).click();
+  await page.getByRole('button', { name: /Continue/ }).click();
+
+  await page.getByLabel('Support ends').fill('2026-09-30');
+  await page.getByLabel('Support contact').fill('support@example.com');
+  await page.getByLabel('Included during the window').fill('Delivered-work defects and access clarification.');
+  await page.getByRole('button', { name: /Continue/ }).click();
+
+  await page.getByLabel('I received the listed assets and links.').check();
+  await page.getByLabel('I understand and accept the documented ownership state.').check();
+  await page.getByLabel(/credentials are exchanged separately/).check();
+  await page.getByLabel('Client representative').fill('Ari Client');
+  await page.getByLabel('Role').fill('Owner');
+  await page.getByLabel('Acknowledgement date').fill('2026-08-28');
+  await page.getByRole('button', { name: 'Record acknowledgement' }).click();
+  await expect(page.getByText('Client acknowledgement recorded.')).toBeVisible();
+  await page.getByRole('button', { name: /Review exports/ }).click();
+  await expect(page.getByText('Acknowledged closeout')).toBeVisible();
+
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByRole('button', { name: /Download client packet/ }).click();
+  const download = await downloadPromise;
+  expect(download.suggestedFilename()).toBe('acme-platform-handoff.html');
+  expect(await download.failure()).toBeNull();
+});
