@@ -66,7 +66,7 @@ function shell(content: string): string {
   </header>
   ${notice ? `<div class="toast ${noticeKind}" role="status">${value(notice)}</div>` : ''}
   <div id="route-announcer" class="sr-only" aria-live="polite"></div><main id="main">${content}</main>
-  <footer><p><strong>Closeout Kit</strong> builds client handoff packets. Packet data is encrypted before this browser saves it.</p><nav aria-label="Footer"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="https://github.com/B-Divyesh/sf-client-offboarding-kit" rel="noreferrer">Source <span class="sr-only">(opens externally)</span></a></nav><p>Built by Param Factory · Build 1.2.0 · Generated artwork</p></footer>
+  <footer><p><strong>Closeout Kit</strong> builds client handoff packets. Packet data is encrypted before this browser saves it.</p><nav aria-label="Footer"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="https://github.com/B-Divyesh/sf-client-offboarding-kit" rel="noreferrer">Source <span class="sr-only">(opens externally)</span></a></nav><p>Built by Param Factory · Build 1.2.1 · Generated artwork</p></footer>
   ${packetLibraryDialog()}`;
 }
 
@@ -91,7 +91,7 @@ function welcomeView(): string {
       <h1 tabindex="-1">Build a client closeout packet.</h1>
       <p>For freelance developers and web studios handing finished projects to clients.</p>
       <div class="demo-action"><a class="primary button-link" href="/demo">Try it with sample data ${icon('arrow')}</a><span>Opens a filled six-stage packet; your packets stay unchanged.</span></div>
-      <ul class="trust-row"><li>${icon('lock')} Encrypted before saving</li><li>No account needed</li><li>Works offline after the first visit</li></ul>
+      <ul class="trust-row"><li>${icon('lock')} Encrypted before saving</li><li>No purchase required</li><li>Works offline after the first visit</li></ul>
       <form id="access-form" class="access-form">
         <label for="passphrase">${hasPackets ? 'Packet passphrase' : 'Create a packet passphrase'}</label>
         <input id="passphrase" name="passphrase" type="password" minlength="10" autocomplete="${hasPackets ? 'current-password' : 'new-password'}" required>
@@ -196,6 +196,15 @@ const stageTitles = [
   'Export — Closeout Kit'
 ];
 
+const demoStageTitles = [
+  'Closeout Kit demo — describe the finished project',
+  'Closeout Kit demo — list assets and owners',
+  'Closeout Kit demo — confirm account changes',
+  'Closeout Kit demo — set support dates',
+  'Closeout Kit demo — collect a client receipt',
+  'Closeout Kit demo — download the client packet'
+];
+
 function routeForStage(index: number): string {
   return demoMode ? `/demo?stage=${stageSlugs[index]}` : `/packet/${stageSlugs[index]}`;
 }
@@ -210,7 +219,7 @@ function routeStep(): number {
 }
 
 function updateMetadata(): void {
-  const title = mode === 'notfound' ? 'Page not found — Closeout Kit' : mode === 'workspace' ? (demoMode ? `Demo · ${stageTitles[step]}` : stageTitles[step]) : 'Closeout Kit — build client handoff packets';
+  const title = mode === 'notfound' ? 'Page not found — Closeout Kit' : mode === 'workspace' ? (demoMode ? demoStageTitles[step] : stageTitles[step]) : 'Closeout Kit — build client handoff packets';
   const description = demoMode ? 'Try a filled client handoff packet with isolated sample data.' : 'Build a client packet with asset links, owners, access tasks, support dates, and acknowledgement.';
   document.title = title;
   document.querySelector<HTMLMetaElement>('meta[name="description"]')?.setAttribute('content', description);

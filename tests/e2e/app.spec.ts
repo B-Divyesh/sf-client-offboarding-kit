@@ -119,6 +119,22 @@ test('@claim:private-network keeps packet content out of every request', async (
   expect(await page.locator('input[type=email], input[name*=account], input[name*=login]').count()).toBe(0);
 });
 
+test('@claim:no-purchase-required creates and exports a real packet without a payment step', async ({ page }) => {
+  const requests: string[] = [];
+  page.on('request', (request) => requests.push(request.url()));
+  await page.goto('/');
+  await expect(page.getByText('No purchase required', { exact: true })).toBeVisible();
+  await page.getByLabel('Create a packet passphrase').fill('no-purchase-packet-2026');
+  await page.getByLabel('Confirm passphrase').fill('no-purchase-packet-2026');
+  await page.getByRole('button', { name: /Create your packet/ }).click();
+  await page.getByLabel('Project name').fill('No-purchase client project');
+  await stageButton(page, 'Export').click();
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByRole('button', { name: /Download client packet/ }).click();
+  expect((await downloadPromise).suggestedFilename()).toBe('no-purchase-client-project.html');
+  expect(requests.some((url) => /checkout|billing|payment|license/i.test(url))).toBe(false);
+});
+
 test('@claim:credential-rejection preserves valid asset fields and focuses the error', async ({ page }) => {
   await openDemo(page, 'engagement');
   await page.getByLabel('Outcome summary').fill('password=client-secret-value');
@@ -260,9 +276,12 @@ test('@claim:art-provenance ships the recorded original artwork', async ({ page 
 
 test('stage URLs restore state, titles, history, focus, and announcements', async ({ page }) => {
   await openDemo(page);
+  await expect(page).toHaveTitle('Closeout Kit demo — describe the finished project');
   await stageButton(page, 'Assets').click();
   await expect(page).toHaveURL('/demo?stage=assets');
-  await expect(page).toHaveTitle('Demo · Assets — Closeout Kit');
+  await expect(page).toHaveTitle('Closeout Kit demo — list assets and owners');
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', 'Closeout Kit demo — list assets and owners');
+  await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute('content', 'Closeout Kit demo — list assets and owners');
   await expect(page.getByRole('heading', { name: 'List assets and owners.' })).toBeFocused();
   await stageButton(page, 'Support').click();
   await page.goBack();
@@ -335,7 +354,7 @@ test('390px layout has no overflow and keeps the complete first screen visible',
   await expect(page.getByRole('heading', { name: 'Build a client closeout packet.' })).toBeVisible();
   await expect(page.getByRole('link', { name: /Try it with sample data/ })).toBeInViewport();
   await expect(page.getByText('Encrypted before saving', { exact: true })).toBeInViewport();
-  await expect(page.getByText('No account needed', { exact: true })).toBeInViewport();
+  await expect(page.getByText('No purchase required', { exact: true })).toBeInViewport();
   await expect(page.getByText('Works offline after the first visit', { exact: true })).toBeInViewport();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
   await openDemo(page, 'assets');

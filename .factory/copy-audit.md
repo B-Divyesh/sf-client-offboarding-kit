@@ -25,7 +25,7 @@ No line exceeds 22 words. No banned term appears; “unlock” is used only for 
 | 13 | Use at least 10 characters. Keep the passphrase because the app cannot recover it. | Pass |
 | 3 | Create your packet | Pass |
 | 3 | Encrypted before saving | Pass |
-| 3 | No account needed | Pass |
+| 3 | No purchase required | Pass |
 | 6 | Works offline after the first visit | Pass |
 | 3 | Filled packet preview | Pass |
 | 5 | Preview a filled client packet. | Pass |
@@ -78,6 +78,7 @@ The demo banner adds these lines:
 | 12 | Download a client HTML packet, an encrypted backup, and a client acknowledgement form. | Pass |
 | 7 | Import encrypted backups and client acknowledgement receipts. | Pass |
 | 7 | Keep working offline after the first visit. | Pass |
+| 7 | Create and export a packet without purchase. | Pass |
 | 14 | The app does not move accounts, host files, migrate a CMS, or test client access. | Pass |
 | 11 | Complete those actions in the original hosting, domain, CMS, or account service. | Pass |
 | 17 | Open `/demo` or `/?demo=1` to load the filled Northstar Arts website packet. | Pass |

@@ -17,6 +17,7 @@ Try the isolated sample: <https://client-offboarding-kit.sociobot.in/demo>
 - Download a client HTML packet, an encrypted backup, and a client acknowledgement form.
 - Import encrypted backups and client acknowledgement receipts.
 - Keep working offline after the first visit.
+- Create and export a packet without purchase.
 
 The app does not move accounts, host files, migrate a CMS, or test client access.
 

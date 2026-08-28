@@ -28,6 +28,13 @@
     "sandbox": "fresh demo; visit every stage, export, inspect every URL, method, and body for packet text, and assert no account fields"
   },
   {
+    "id": "no-purchase-required",
+    "claim": "No purchase is required to create and export a packet.",
+    "where": "landing facts, README",
+    "test": "npm run test:claims -- --grep @claim:no-purchase-required",
+    "sandbox": "fresh real packet; create a packet, enter a project name, export its client HTML, and assert no checkout, billing, payment, or license request"
+  },
+  {
     "id": "credential-rejection",
     "claim": "The app rejects common credential and private-key patterns without clearing valid fields.",
     "where": "landing privacy section, asset stage, README",
