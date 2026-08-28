@@ -1,5 +1,11 @@
 # Closeout Kit v1 handoff
 
+## Independent verification status (2026-08-28): **FAIL**
+
+Candidate `80abb1cd1c003ac230480642e99e7bdcfaaeaac4` was independently built and tested from a clean checkout, then hash-compared with https://client-offboarding-kit.sociobot.in. The live deployment exactly matches the candidate and the functional, accessibility, privacy, offline-reload, desktop, and mobile checks pass. It cannot be accepted yet because production headers omit CSP/frame/permissions policy and serve content-hashed assets with `Cache-Control: public, must-revalidate, max-age=30` rather than long-lived immutable caching. The manifest is also `application/octet-stream`, and asset-form validation clears entered values.
+
+See [`.factory/verification.md`](verification.md) for commands, evidence, exact live hashes, severity-ranked defects, and required follow-up. This verification record supersedes the self-reported PASS below; no product code was changed by the verifier.
+
 ## Shipped
 
 - Six-stage client closeout route: engagement, assets/ownership, transfer and revoke actions, support window, client acknowledgement, and export.
