@@ -1,0 +1,9 @@
+{
+  "generator": "/opt/fleet/lib/gen-image.sh",
+  "deployment": "factory-image",
+  "date": "2026-08-28",
+  "size": "1536x1024",
+  "quality": "high",
+  "prompt": "Cinematic environmental concept art for an offline client handoff utility. A quiet coastal operations room at blue hour after a successful project departure, looking through salt-worn glass toward a dark harbor and one distant amber beacon. Dark teal painted steel, matte archival papers inside a closed document case on the lower right, a neatly routed cable, subtle brass signal fixture, sea haze, restrained film grain, realistic materials, 35mm wide composition, horizon in upper third, generous calm negative space on the left, deep readable shadows. Deep water teal, fog ivory, signal amber and subdued rust palette. No people, no text, no letters, no logos, no watermark, no visible credentials, no keys, no locks, no UI, no neon cyberpunk, no fantasy, no clutter.",
+  "review": "Approved: no text artifacts, brands, people, visible credentials, malformed objects, or objectionable symbols. Palette and composition match the recorded thesis."
+}
