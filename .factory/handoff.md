@@ -1,23 +1,61 @@
-# Closeout Kit review 3 handoff
+# Closeout Kit — polish 3 handoff
 
 ## Outcome
 
-Independent adversarial review 3 is complete. The review is **FAIL** with two minor findings, recorded in `.factory/review-3.md`:
+Perfection-loop round 3 is complete with no unresolved review findings.
 
-- `F-3-1`: the first screen lacks the required price/no-cost fact.
-- `F-3-2`: demo route titles do not use the required product-title pattern.
+- Repaired release candidate: `41299fc997a1f6295df4d78ae191a6f58777b1d7`
+- Product repair commits: `c2e06a2f4166b5a45ed50e5bd6a205f55b49e1ea` and `c5b2ce681fe39eef5abeaa2057c5668eb26007d9`
+- Version: 1.2.1
+- Deployed Static Web Apps deployment: `f4368755-2dc7-49b6-b95b-7384078cab00`
+- Live URL: <https://client-offboarding-kit.sociobot.in>
 
-No product code was changed. This commit changes only review documentation and this handoff.
+The first screen now states the real commercial condition, “No purchase required,” and that statement has a clean, observable create-and-export claim test. All demo stages now use short product-first titles with matching Open Graph and Twitter metadata. The repair also adds full-public-route AxeBuilder coverage and keeps the original harbor control-room visual system intact.
 
-## Verification performed
+## Verification
 
-- Opened the live root cold at 390 × 844 and 1440 × 900. The job, audience, and first action were clear.
-- Entered live `/demo` from a fresh browser context. Confirmed realistic sample data, persistent sandbox banner, isolated `demo:closeout-kit-v1` storage, Reset behavior, same-origin GET-only request log, and offline reload/export.
-- Crawled the live root, demo assets, legal, 404, provider, and source links; all applicable HTTP links returned successful responses.
-- Checked metadata, deep links, 404 status/recovery, headers, cache policy, manifest MIME type, mobile target dimensions, and live axe serious/critical violations.
-- Cloned `41299fc` to a fresh temporary checkout, ran `npm ci`, every exact command listed in `.factory/claims.json`, `npm test`, and `npm run build`. All passed. The build produced `dist/index.html`.
-- Read the brief, design record, claims registry, demo contract, README, both earlier reviews, both polish records, and prior handoff. Rechecked every F-1 and F-2 finding against current source and live behavior.
+### Fresh clone
 
-## Known gaps / next steps
+From a new `git clone --no-local` at `c5b2ce681fe39eef5abeaa2057c5668eb26007d9` with no `dist/`:
 
-Resolve F-3-1 and F-3-2, then run the affected claims/tests and a fresh mobile cold read. There are no other known review findings.
+1. `npm ci` passed with Node 22.23.2 and no vulnerabilities.
+2. Every one of the 13 exact commands listed in `.factory/claims.json` passed, each creating its own build through `pretest:claims`.
+3. `npm test` passed: 12 unit/config tests and 21 Chromium browser tests.
+4. `npm run build` passed and produced `dist/index.html`.
+5. Registry audit found 13 unique claim IDs and exactly one `@claim:<id>` test tag per entry.
+
+The claims include demo isolation/reset, encrypted storage, offline reload/export, same-origin request privacy, no-purchase real flow, credential rejection, access confirmation, packet export, backup restore, client receipt round trip, workflow boundaries, no recovery, and art provenance.
+
+### Build and local browser evidence
+
+- Production bundle: JavaScript 47.13 KB raw / 15.70 KB gzip; CSS 19.44 KB raw / 5.06 KB gzip.
+- Local cold verifier passed title, `lang`, one h1, main landmark, image alt attributes, button names, and console errors: `.factory/evidence/polish-3-local/verify.json`.
+- Local screenshots: `.factory/evidence/polish-3-local-mobile-home.png` and `.factory/evidence/polish-3-local-desktop-demo-assets.png`.
+
+### Live recheck after deployment
+
+- `PLAYWRIGHT_BASE_URL=https://client-offboarding-kit.sociobot.in npm test` passed all 21 browser checks on the deployed site, including all claims, offline reload, titles/metadata, focus/history, 390 px layout, 44 px targets, and route accessibility.
+- Fresh cold URL verifier passed with no console errors: `.factory/evidence/polish-3-live/verify.json`.
+- Cold live screenshots: `.factory/evidence/polish-3-live-mobile-home.png` and `.factory/evidence/polish-3-live-desktop-demo-assets.png`.
+- Live Lighthouse mobile: Performance 99, Accessibility 100, Best Practices 100, SEO 100; FCP 1.0 s, LCP 1.1 s, CLS 0, TBT 110 ms. Raw result: `.factory/evidence/polish-3-live/lighthouse-mobile.json`.
+- Live routes returned 200: `/`, `/demo`, every `/packet/<stage>`, `/privacy/`, and `/terms/`. `/404.html` and `/not-a-real-route` returned the styled 404 with HTTP 404.
+- Live headers confirm CSP with `frame-ancestors 'none'`, `X-Frame-Options: DENY`, Permissions-Policy, nosniff, referrer policy, immutable hashed assets, `sw.js` no-store, and `application/manifest+json` for the manifest.
+
+The standalone `@axe-core/cli` ChromeDriver command could not start in this container because its bundled driver is version 152 while the preinstalled Chrome is 145. The executed Playwright AxeBuilder suite audited root, Privacy, Terms, the 404, and all six demo stages, with zero serious or critical violations; this is an environment-tool mismatch, not a product gap.
+
+## Run, test, deploy
+
+```bash
+npm ci
+npm run dev
+npm test
+npm run test:claims
+npm run build
+/opt/fleet/lib/deploy-static.sh client-offboarding-kit dist
+```
+
+Try the isolated sample at `/demo` or `/?demo=1`. Reset restores the Northstar sample; Start for real discards demo storage. See `.factory/demo.md` for storage isolation details and `.factory/polish-3.md` for every review finding mapping.
+
+## Known gaps
+
+None. No payment offer is shown because checkout is not enabled; the full product workflow is truthfully available without purchase.
