@@ -22,7 +22,7 @@ The unavailable Studio offer was removed. The free workflow now includes a clien
 
 ## Verification
 
-Local source-tree results:
+Fresh-clone results for repair commit `f6e8332aa9f3a0bccea5a9015ec436ff3df123c7`:
 
 ```text
 npm test
@@ -49,6 +49,28 @@ Lighthouse 12.8.2 against production preview
   FCP 1.1 s · LCP 1.4 s · CLS 0 · TBT 0 ms
 ```
 
+Cold production checks at <https://client-offboarding-kit.sociobot.in> after the final deployment:
+
+```text
+Lighthouse 12.8.2
+  Performance 100
+  Accessibility 100
+  Best Practices 100
+  SEO 100
+  FCP 0.9 s · LCP 1.1 s · CLS 0 · TBT 10 ms
+
+Offline browser check
+  PASS — service worker controlled /demo?stage=export
+  PASS — cold offline reload showed the saved Northstar sample
+  PASS — offline export downloaded northstar-arts-website.html
+  PASS — no console or page errors
+
+Delivery checks
+  PASS — /, /demo, /packet/assets, /privacy/, and /terms/ return 200
+  PASS — unknown routes and /404.html return the designed page with status 404
+  PASS — manifest MIME, no-store service worker, security headers, and frame denial
+```
+
 Evidence:
 
 - Finding map: `.factory/polish-1.md`
@@ -72,3 +94,5 @@ npm run build
 None in the reviewed scope. Studio remains intentionally absent until its Sociobot billing product is enabled.
 
 The first live audit found that precaching the intentional `/404.html` response prevented service-worker installation. The URL was removed from precache, a regression test was added, and the site was redeployed before handoff.
+
+Repair commits: `3c60095` (cumulative review repair) and `f6e8332` (live service-worker regression repair). The final product build was deployed from `f6e8332`.

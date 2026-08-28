@@ -46,7 +46,7 @@ Evidence screenshots are in `.factory/evidence/`. Automated names below refer to
 | F-1-38 | Replaced the broad data statement with scoped browser/recovery language. | `@claim:private-network`; `@claim:recovery-boundary` |
 | F-1-39 | Replaced jargon-first copy and inspected stored ciphertext for absent sample plaintext/passphrase. | `@claim:encrypted-storage` |
 | F-1-40 | Kept “No account needed” and proved a complete demo without authentication requests or account fields. | `@claim:private-network` |
-| F-1-41 | Made the claim precise: offline after first visit; tested cold cache, offline reload, and export. | `@claim:offline-reload` |
+| F-1-41 | Made the claim precise: offline after first visit; tested cold cache, offline reload, and export. | `@claim:offline-reload`; live offline reload and `northstar-arts-website.html` download |
 | F-1-42 | Registered the no-analytics/account claim and asserted every demo request is same-origin. | `@claim:private-network` |
 | F-1-43 | Retained disclosure, recorded generated-art prompt/provenance, and tested the shipped file and record. | `@claim:art-provenance`; design.md |
 | F-1-44 | Removed the unpurchasable $29 offer. | paid-copy `rg` |
@@ -60,7 +60,7 @@ Evidence screenshots are in `.factory/evidence/`. Automated names below refer to
 | F-1-52 | Removed the unavailable paid-license claim. | paid-copy `rg` |
 | F-1-53 | Moved the four boundaries into a literal limitations section and registered them. | `@claim:workflow-boundaries` |
 | F-1-54 | Removed the environment/backend marketing claim; local run instructions state only required commands. | README audit |
-| F-1-55 | Split test documentation and verified every named category in `npm test`. | `npm test` 9 unit/config + 16 browser tests |
+| F-1-55 | Split test documentation and verified every named category in `npm test`. | `npm test` 10 unit/config + 16 browser tests |
 | F-1-56 | Kept Playwright exactly pinned at 1.58.2 in package and lock; removed prose claim. | package files; clean `npm ci` |
 | F-1-57 | Kept `dist/` instructions and verified `dist/index.html`. | `npm run build`; clean-clone check |
 | F-1-58 | Added service-worker/manifest build checks through the build and deployed MIME/header check. | dist inspection; config tests |
@@ -78,3 +78,7 @@ Evidence screenshots are in `.factory/evidence/`. Automated names below refer to
 - The first live audit exposed `/404.html` in the service-worker precache. It was removed, covered by `does not precache a URL that intentionally responds with 404`, and redeployed.
 - Production bundles: JS 46.63 KB raw / 15.60 KB gzip; CSS 19.00 KB raw / 5.01 KB gzip.
 - `/opt/fleet/lib/verify-url.sh`: title, `lang`, one h1, main, image alt, button names, and console checks pass.
+- Fresh clone of `f6e8332aa9f3a0bccea5a9015ec436ff3df123c7`: `npm ci`, `npm test`, and `npm run test:claims` pass (10 unit/config, 16 browser, 12 claims).
+- Cold live check at <https://client-offboarding-kit.sociobot.in>: service-worker-controlled offline reload and offline packet export pass with no console errors.
+- Live Lighthouse 12.8.2: Performance 100, Accessibility 100, Best Practices 100, SEO 100; FCP 0.9 s, LCP 1.1 s, CLS 0, TBT 10 ms.
+- Live delivery: product/legal/stage routes return 200; unknown routes and `/404.html` return 404; CSP, framing, permissions, manifest MIME, and service-worker cache headers are present.
