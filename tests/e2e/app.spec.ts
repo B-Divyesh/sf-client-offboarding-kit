@@ -209,7 +209,10 @@ test('@claim:acknowledgement-receipt exports a client form and imports its recei
   const formHtml = await (await import('node:fs/promises')).readFile(formPath, 'utf8');
   expect(formHtml).toContain('Download acknowledgement receipt');
   expect(formHtml).toContain('not a legal e-signature');
-  await page.setContent(formHtml, { waitUntil: 'load' });
+  const executableFormPath = `${formPath}.html`;
+  await (await import('node:fs/promises')).copyFile(formPath, executableFormPath);
+  const { pathToFileURL } = await import('node:url');
+  await page.goto(pathToFileURL(executableFormPath).href);
   for (const checkbox of await page.getByRole('checkbox').all()) await checkbox.check();
   await page.getByLabel('Your name').fill('Maya Chen');
   await page.getByLabel('Role').fill('Director');
@@ -293,6 +296,24 @@ test('sample provider links resolve without dead ends', async ({ page, request }
   const links = await page.locator('.record-main a').evaluateAll((elements) => elements.map((element) => (element as HTMLAnchorElement).href));
   expect(links).toEqual(['https://github.com/', 'https://www.netlify.com/', 'https://www.cloudflare.com/products/registrar/']);
   for (const link of links) expect((await request.get(link)).status()).toBeLessThan(400);
+});
+
+test('landing headings and workflow actions name their destinations', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('heading', { name: 'Preview a filled client packet.' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Create and send a packet in three steps.' })).toBeVisible();
+  const actions: Record<string, string[]> = {
+    engagement: ['Review assets'],
+    assets: ['Edit engagement', 'Review access tasks'],
+    'access-tasks': ['Review assets', 'Set support dates'],
+    support: ['Review access tasks', 'Collect client receipt'],
+    acknowledgement: ['Set support dates', 'Review exports'],
+    export: ['Review acknowledgement', 'Return to engagement']
+  };
+  for (const [stage, labels] of Object.entries(actions)) {
+    await openDemo(page, stage);
+    await expect(page.locator('.step-actions button')).toHaveText(labels);
+  }
 });
 
 test('all app routes pass serious accessibility checks and keyboard landmarks', async ({ page }) => {
