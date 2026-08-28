@@ -11,9 +11,17 @@ export type EncryptedEnvelope = {
   updatedAt: string;
 };
 
-const DB_NAME = 'closeout-kit-v1';
+const REAL_DB_NAME = 'closeout-kit-v1';
+const DEMO_DB_NAME = 'demo:closeout-kit-v1';
 const STORE = 'encrypted-packets';
 const ITERATIONS = 160_000;
+let demoStorage = false;
+
+export function configureStorage(isDemo: boolean): void {
+  demoStorage = isDemo;
+}
+
+const databaseName = () => demoStorage ? DEMO_DB_NAME : REAL_DB_NAME;
 
 const toBase64 = (bytes: Uint8Array) => {
   let binary = '';
@@ -64,10 +72,19 @@ export async function decryptPacket(envelope: EncryptedEnvelope, passphrase: str
 
 function openDb(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open(DB_NAME, 1);
+    const request = indexedDB.open(databaseName(), 1);
     request.onupgradeneeded = () => request.result.createObjectStore(STORE, { keyPath: 'id' });
     request.onsuccess = () => resolve(request.result);
     request.onerror = () => reject(new Error('Private local storage could not be opened. Check browser storage permissions.'));
+  });
+}
+
+export function clearDemoStorage(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.deleteDatabase(DEMO_DB_NAME);
+    request.onsuccess = () => resolve();
+    request.onerror = () => reject(new Error('The sample packet could not be reset.'));
+    request.onblocked = () => resolve();
   });
 }
 

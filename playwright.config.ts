@@ -15,7 +15,6 @@ export default defineConfig({
     reuseExistingServer: true
   },
   projects: [
-    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-    { name: 'mobile', use: { ...devices['iPhone 13'], browserName: 'chromium', viewport: { width: 390, height: 844 } } }
+    { name: 'chromium', use: { ...devices['Desktop Chrome'] } }
   ]
 });

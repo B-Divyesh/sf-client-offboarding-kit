@@ -1,2 +1,110 @@
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0A1518"><meta name="description" content="Closeout Kit privacy policy"><link rel="stylesheet" href="/legal.css"><title>Privacy — Closeout Kit</title></head><body><header><a href="/">← Closeout Kit</a><h1>Privacy</h1><p>Effective 28 August 2026</p></header><main><h2>The short version</h2><p>Closeout Kit does not have an account system, analytics, or a product database. Packet contents stay in your browser, encrypted with a passphrase only you know.</p><h2>Data stored on your device</h2><p>Packet data is encrypted with AES-GCM using a key derived from your passphrase, then stored in IndexedDB. The passphrase is held only in memory while the workspace is unlocked. We cannot read or recover either one. License tokens and a daily verification result are stored in localStorage.</p><h2>Data sent over the network</h2><p>The app shell and generated harbor artwork are served from this product’s origin. If you buy or restore Studio, your browser sends the license token to the Sociobot billing API to verify that it is active. Packet contents and your passphrase are never sent with that request.</p><h2>Exports and links</h2><p>HTML exports are intentionally readable files for your client. Encrypted JSON backups require the packet passphrase. Links in a packet go directly to the systems you supplied; those systems have their own privacy policies.</p><h2>Deleting data</h2><p>Use “Delete packet” in the Export stage, or clear site data in your browser. Clearing site data removes packets and license state from that browser.</p><h2>Contact</h2><p>Privacy questions can be sent to <a href="mailto:privacy@sociobot.in">privacy@sociobot.in</a>.</p></main><footer><a href="/terms/">Terms</a> · <a href="/">Return to the app</a></footer></body></html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0A1518" />
+    <meta
+      name="description"
+      content="How Closeout Kit stores packet data and handles exports."
+    />
+    <link
+      rel="canonical"
+      href="https://client-offboarding-kit.sociobot.in/privacy/"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://client-offboarding-kit.sociobot.in/privacy/"
+    />
+    <meta property="og:title" content="Privacy — Closeout Kit" />
+    <meta
+      property="og:description"
+      content="How Closeout Kit stores packet data and handles exports."
+    />
+    <meta
+      property="og:image"
+      content="https://client-offboarding-kit.sociobot.in/art/closeout-social.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Privacy — Closeout Kit" />
+    <meta
+      name="twitter:description"
+      content="How Closeout Kit stores packet data and handles exports."
+    />
+    <meta
+      name="twitter:image"
+      content="https://client-offboarding-kit.sociobot.in/art/closeout-social.jpg"
+    />
+    <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/legal.css" />
+    <title>Privacy — Closeout Kit</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <a class="brand" href="/">Closeout Kit</a>
+      <nav aria-label="Main">
+        <a href="/">Home</a><a href="/demo">Demo</a
+        ><a aria-current="page" href="/privacy/">Privacy</a
+        ><a href="/terms/">Terms</a>
+      </nav>
+    </header>
+    <main id="main">
+      <p class="eyebrow">Effective 28 August 2026</p>
+      <h1>Privacy</h1>
+      <h2>What stays in this browser</h2>
+      <p>
+        The browser encrypts each packet with AES-GCM before saving it in
+        IndexedDB. Your passphrase stays in memory while the packet is open.
+      </p>
+      <p>
+        Closeout Kit has no product account or analytics. The sample uses a
+        separate <code>demo:closeout-kit-v1</code> database that resets when
+        opened.
+      </p>
+      <h2>What travels over the network</h2>
+      <p>
+        The app, generated harbor artwork, and updates load from this product’s
+        origin. Packet content and passphrases are not sent to a server.
+      </p>
+      <p>
+        Links you add open the original services you chose. Those services have
+        their own privacy policies.
+      </p>
+      <h2>Exports and receipts</h2>
+      <p>
+        Client packet exports are readable HTML files. Encrypted JSON backups
+        require the packet passphrase.
+      </p>
+      <p>
+        A client acknowledgement form creates a JSON receipt. It contains the
+        packet ID, project name, confirmations, typed name, role, and date.
+      </p>
+      <h2>Delete your data</h2>
+      <p>
+        Use “Delete packet” in the Export stage, or clear this site’s browser
+        data. Either action removes local packets from that browser.
+      </p>
+      <h2>Contact</h2>
+      <p>
+        Send privacy questions to
+        <a href="mailto:privacy@sociobot.in">privacy@sociobot.in</a>.
+      </p>
+    </main>
+    <footer>
+      <p>Closeout Kit builds client handoff packets.</p>
+      <nav aria-label="Footer">
+        <a href="/privacy/">Privacy</a><a href="/terms/">Terms</a
+        ><a href="https://github.com/B-Divyesh/sf-client-offboarding-kit"
+          >Source <span class="sr-only">(opens externally)</span></a
+        >
+      </nav>
+      <p>Built by Param Factory · Build 1.1.0 · Generated artwork</p>
+    </footer>
+  </body>
+</html>

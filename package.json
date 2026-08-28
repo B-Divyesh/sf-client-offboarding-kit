@@ -1,22 +1,27 @@
 {
   "name": "client-offboarding-kit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "test": "vitest run && npm run build && playwright test"
+    "test": "vitest run && npm run build && playwright test --project=chromium",
+    "test:claims": "playwright test --project=chromium --grep @claim"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.10.2",
     "@playwright/test": "1.58.2",
+    "@types/node": "^22.20.1",
     "typescript": "^5.7.3",
     "vite": "^6.1.0",
     "vitest": "^3.0.5"
   },
   "overrides": {
     "playwright-core": "1.58.2"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

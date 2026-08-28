@@ -1,0 +1,86 @@
+[
+  {
+    "id": "demo-isolation",
+    "claim": "The sample stays separate from real packets and is discarded when you start for real.",
+    "where": "landing page, demo banner, README",
+    "test": "npm run test:claims -- --grep @claim:demo-isolation",
+    "sandbox": "fresh browser; create a real packet, edit the sample, leave demo, unlock real packet, and inspect database names"
+  },
+  {
+    "id": "encrypted-storage",
+    "claim": "Packet data is encrypted before this browser saves it.",
+    "where": "landing facts, footer, privacy page, README",
+    "test": "npm run test:claims -- --grep @claim:encrypted-storage",
+    "sandbox": "fresh demo; inspect the demo IndexedDB envelope and reject sample plaintext and the passphrase"
+  },
+  {
+    "id": "offline-reload",
+    "claim": "Works offline after the first visit.",
+    "where": "landing facts, README",
+    "test": "npm run test:claims -- --grep @claim:offline-reload",
+    "sandbox": "fresh demo; wait for service worker, reload once, set context offline, reload, and export"
+  },
+  {
+    "id": "private-network",
+    "claim": "No product account or analytics; packet content stays in the browser until a file is exported.",
+    "where": "privacy page, README",
+    "test": "npm run test:claims -- --grep @claim:private-network",
+    "sandbox": "fresh demo; record the full request log and assert same-origin requests and no account fields"
+  },
+  {
+    "id": "credential-rejection",
+    "claim": "The app rejects common credential and private-key patterns without clearing valid fields.",
+    "where": "landing privacy section, asset stage, README",
+    "test": "npm run test:claims -- --grep @claim:credential-rejection",
+    "sandbox": "fresh demo; submit a token-shaped note and assert error, field preservation, and focus"
+  },
+  {
+    "id": "access-confirmation",
+    "claim": "An access task cannot be completed until its original service check is confirmed.",
+    "where": "how it works, access task stage, README",
+    "test": "npm run test:claims -- --grep @claim:access-confirmation",
+    "sandbox": "fresh demo; attempt completion before and after checking the confirmation"
+  },
+  {
+    "id": "packet-export",
+    "claim": "The app downloads one client HTML packet containing every packet section.",
+    "where": "landing preview, export stage, README",
+    "test": "npm run test:claims -- --grep @claim:packet-export",
+    "sandbox": "fresh demo; download HTML and inspect engagement, assets, access tasks, support, and acknowledgement"
+  },
+  {
+    "id": "backup-roundtrip",
+    "claim": "Encrypted JSON backups can restore a packet.",
+    "where": "export stage, privacy page, README",
+    "test": "npm run test:claims -- --grep @claim:backup-roundtrip",
+    "sandbox": "fresh demo; download backup, edit sample, import backup, and compare restored project"
+  },
+  {
+    "id": "acknowledgement-receipt",
+    "claim": "A client can create a small acknowledgement receipt file that imports into its packet.",
+    "where": "how it works, acknowledgement stage, privacy page, README",
+    "test": "npm run test:claims -- --grep @claim:acknowledgement-receipt",
+    "sandbox": "fresh demo; inspect exported form, import matching receipt fixture, and assert acknowledged state"
+  },
+  {
+    "id": "workflow-boundaries",
+    "claim": "The app does not transfer accounts, host files, migrate a CMS, or test client access.",
+    "where": "landing limitations, terms, README",
+    "test": "npm run test:claims -- --grep @claim:workflow-boundaries",
+    "sandbox": "fresh landing page; assert the complete limitations statement is visible"
+  },
+  {
+    "id": "recovery-boundary",
+    "claim": "The app cannot recover a lost packet passphrase.",
+    "where": "landing passphrase help",
+    "test": "npm run test:claims -- --grep @claim:recovery-boundary",
+    "sandbox": "enter through demo, start for real, create and lock a packet, try a wrong passphrase, and assert no recovery request"
+  },
+  {
+    "id": "art-provenance",
+    "claim": "The interface uses original generated artwork recorded in the design provenance.",
+    "where": "footer",
+    "test": "npm run test:claims -- --grep @claim:art-provenance",
+    "sandbox": "fresh landing page; assert disclosure, shipped art response, factory generation record, and prompt"
+  }
+]

@@ -52,6 +52,19 @@ export type Packet = {
   updatedAt: string;
 };
 
+export type AcknowledgementReceipt = {
+  format: 'closeout-kit-acknowledgement';
+  version: 1;
+  packetId: string;
+  projectName: string;
+  received: true;
+  ownership: true;
+  noSecrets: true;
+  signer: string;
+  role: string;
+  signedAt: string;
+};
+
 export const today = () => new Date().toISOString().slice(0, 10);
 
 export function createPacket(): Packet {
@@ -73,6 +86,28 @@ export function createPacket(): Packet {
     createdAt: now,
     updatedAt: now
   };
+}
+
+export function createDemoPacket(): Packet {
+  const packet = createPacket();
+  packet.id = 'demo-northstar-site';
+  packet.projectName = 'Northstar Arts website';
+  packet.clientName = 'Northstar Arts Council';
+  packet.preparedBy = 'Tideway Web Studio';
+  packet.closeoutDate = '2026-08-28';
+  packet.summary = 'New public website, event archive, and editor guide delivered for the autumn programme.';
+  packet.assets = [
+    { id: 'demo-repo', name: 'Production repository', kind: 'Source code', url: 'https://github.com/example/northstar-site', currentOwner: 'Tideway Web Studio', destinationOwner: 'Northstar Arts Council', note: 'Deployment guide is in /docs/operations.md.' },
+    { id: 'demo-host', name: 'Production hosting', kind: 'Hosting', url: 'https://example.com/northstar-hosting', currentOwner: 'Tideway Web Studio', destinationOwner: 'Northstar Arts Council', note: 'Billing owner changes after the client accepts the invitation.' },
+    { id: 'demo-domain', name: 'northstar-arts.example', kind: 'Domain & DNS', url: 'https://example.com/northstar-domain', currentOwner: 'Northstar Arts Council', destinationOwner: 'Northstar Arts Council', note: 'Registrar remains with the client.' }
+  ];
+  packet.actions = [
+    { id: 'demo-transfer', action: 'Transfer repository ownership', system: 'Code host', responsible: 'Maya Chen', due: '2026-08-29', status: 'complete', confirmedExternal: true },
+    { id: 'demo-remove', action: 'Remove studio deployment access', system: 'Hosting service', responsible: 'Jon Bell', due: '2026-09-05', status: 'pending', confirmedExternal: false }
+  ];
+  packet.support = { starts: '2026-08-28', ends: '2026-09-27', contact: 'support@tideway.example', channel: 'Email', included: 'Delivered-work defects, access questions, and one editor walkthrough.', excluded: 'New features, content entry, vendor outages, and subscription costs.' };
+  packet.history = [{ at: packet.createdAt, label: 'Sample packet created' }];
+  return packet;
 }
 
 export function addHistory(packet: Packet, label: string): void {
@@ -112,4 +147,22 @@ export function validatePacketShape(value: unknown): value is Packet {
   if (!value || typeof value !== 'object') return false;
   const packet = value as Partial<Packet>;
   return packet.version === 1 && typeof packet.id === 'string' && Array.isArray(packet.assets) && Array.isArray(packet.actions) && Boolean(packet.support && packet.acknowledgement);
+}
+
+export function validateAcknowledgementReceipt(value: unknown, packet: Packet): value is AcknowledgementReceipt {
+  if (!value || typeof value !== 'object') return false;
+  const receipt = value as Partial<AcknowledgementReceipt>;
+  return receipt.format === 'closeout-kit-acknowledgement'
+    && receipt.version === 1
+    && receipt.packetId === packet.id
+    && receipt.projectName === packet.projectName
+    && receipt.received === true
+    && receipt.ownership === true
+    && receipt.noSecrets === true
+    && typeof receipt.signer === 'string'
+    && Boolean(receipt.signer.trim())
+    && typeof receipt.role === 'string'
+    && typeof receipt.signedAt === 'string'
+    && /^\d{4}-\d{2}-\d{2}$/.test(receipt.signedAt)
+    && !containsSecretLike(`${receipt.signer} ${receipt.role}`);
 }

@@ -53,7 +53,9 @@ Text and control pairs are selected for at least 4.5:1 contrast. Color is always
 ## Original asset plan and provenance
 
 - `public/art/harbor-closeout-{960,1536}.{avif,webp}` plus JPEG fallback: original AI-generated cinematic environmental scene used on the empty/welcome state.
+- `public/art/closeout-social.jpg`: 1200 × 630 center crop derived locally from the approved harbor artwork for social metadata.
 - App icons and interface symbols: hand-authored SVG/geometric CSS, created for this product.
+- `public/icons/favicon.svg` is hand-authored from the beacon-and-check app mark. `apple-touch-icon.png` is a local resize of the same original mark.
 - Generated artwork is disclosed in the footer. No stock, brand, character, or third-party asset is used.
 
 ### Hero prompt sheet

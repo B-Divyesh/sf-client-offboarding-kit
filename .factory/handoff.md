@@ -1,31 +1,72 @@
-# Review 1 handoff
+# Closeout Kit polish 1 handoff
 
 ## Outcome
 
-Adversarial first-read review 1 is complete. The verdict is **FAIL**. No product code was modified.
+All 63 findings from `.factory/review-1.md` are implemented. The product keeps its harbor control-room identity and remains a static offline PWA.
 
-The full report is `.factory/review-1.md`. It records 63 findings, including 10 blocking findings: unclear first screen, no isolated sample demo, no claims registry/tests, dead Studio checkout, broken 404 and stage routing, and all four unresolved defects from the earlier independent verification.
+The unavailable Studio offer was removed. The free workflow now includes a client acknowledgement form and receipt import.
 
-## Verification performed
+## Product changes
 
-- Opened the live root cold in fresh Chromium contexts at 390 × 844 and 1440 × 900; captured above-fold text and screenshots in `/tmp`.
-- Exercised `/demo/` and `/?demo=1`; confirmed no sample/banner/reset and confirmed query-demo writes the real `closeout-kit-v1` IndexedDB namespace.
-- Ran `npm ci` and `npm test`: 5 unit tests passed, the production build passed, 6 Playwright tests passed, and 2 project duplicates were intentionally skipped.
-- Recorded live request logs during create/save/offline reload; requests stayed same-origin and offline reload worked.
-- Ran live axe scans on root, Privacy, Terms, an unknown route, and `/demo/`: zero reported violations.
-- Crawled internal/external links and metadata. Privacy, Terms, and Source returned 200; Studio checkout returned 404.
-- Checked deployed security/cache/MIME headers and reproduced the prior asset-form data-loss defect.
-- Read `.factory/brief.json`, `.factory/design.md`, README, the prior handoff, and `.factory/verification.md`; no earlier review/polish files exist.
+- Rewrote the first screen around the job, audience, sample action, and three tested facts.
+- Added a filled one-click demo at `/demo` and `?demo=1`.
+- Isolated sample storage in `demo:closeout-kit-v1`; real packets remain in `closeout-kit-v1`.
+- Added Reset demo and Start for real controls that delete sample storage.
+- Added real stage URLs, History API navigation, per-stage titles, h1 focus, and route announcements.
+- Added a client acknowledgement HTML form and validated receipt import.
+- Added a styled 404 with host-level 404 status configuration.
+- Added shared headers/footers, legal navigation, canonical/OG/Twitter metadata, social art, SVG favicon, and Apple touch icon.
+- Added CSP/framing/permissions headers, immutable hashed-asset caching, and manifest MIME configuration.
+- Fixed asset validation so all entered fields remain and the invalid field receives an announced error and focus.
+- Removed the broken Studio checkout and every unverified price/entitlement claim.
 
-## Commands
+## Verification
+
+Local source-tree results:
+
+```text
+npm test
+  PASS — 9 unit/config tests
+  PASS — production TypeScript/Vite build
+  PASS — 16 Chromium integration/browser tests
+
+npm run test:claims
+  PASS — 12/12 tagged claim tests
+
+npm run build
+  PASS — dist/index.html
+  JS 46.63 KB raw / 15.60 KB gzip
+  CSS 19.00 KB raw / 5.01 KB gzip
+
+/opt/fleet/lib/verify-url.sh http://127.0.0.1:5173 ...
+  PASS — 560 ms load, no console/page errors, title/lang/main/one h1/alts/button names
+
+Lighthouse 12.8.2 against production preview
+  Performance 100
+  Accessibility 100
+  Best Practices 100
+  SEO 100
+  FCP 1.1 s · LCP 1.2 s · CLS 0 · TBT 0 ms
+```
+
+Evidence:
+
+- Finding map: `.factory/polish-1.md`
+- Claims: `.factory/claims.json`
+- Demo contract: `.factory/demo.md`
+- Copy audit: `.factory/copy-audit.md`
+- Screenshots and Lighthouse JSON: `.factory/evidence/`
+
+## Run and deploy
 
 ```bash
 npm ci
 npm test
+npm run test:claims
+npm run build
+/opt/fleet/lib/deploy-static.sh client-offboarding-kit dist
 ```
 
-Additional evidence commands were Playwright scripts against `https://client-offboarding-kit.sociobot.in`, `curl -I` header/status checks, and source inspection with `rg`/`sed`.
+## Known gaps
 
-## Work left
-
-All findings in `.factory/review-1.md` remain. The next implementation round should start with F-1-1 through F-1-10, add demo and claims contracts, then address structure/copy/unlisted claims before redeploying and requesting a new independent review.
+None in the reviewed scope. Studio remains intentionally absent until its Sociobot billing product is enabled.

@@ -1,12 +1,20 @@
-const VERSION = 'closeout-kit-v1';
+const VERSION = 'closeout-kit-v2';
 const SHELL = `${VERSION}-shell`;
 const RUNTIME = `${VERSION}-runtime`;
 const CORE = [
   '/',
   '/index.html',
   '/offline.html',
+  '/demo',
+  '/packet/engagement',
+  '/packet/assets',
+  '/packet/access-tasks',
+  '/packet/support',
+  '/packet/acknowledgement',
+  '/packet/export',
   '/privacy/',
   '/terms/',
+  '/404.html',
   '/manifest.webmanifest',
   '/robots.txt',
   '/art/harbor-closeout-960.webp',
