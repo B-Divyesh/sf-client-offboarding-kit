@@ -71,8 +71,9 @@ function welcomeView(): string {
   const hasPackets = envelopes.length > 0;
   return shell(`<section class="welcome">
     <picture class="harbor-scene">
-      <source media="(max-width: 700px)" srcset="/art/harbor-closeout-960.webp">
-      <img src="/art/harbor-closeout-1536.webp" width="1536" height="1024" alt="A quiet harbor seen from a dark operations room, with a closed document case ready for handoff" fetchpriority="high" decoding="async">
+      <source type="image/avif" srcset="/art/harbor-closeout-960.avif 960w, /art/harbor-closeout-1536.avif 1536w" sizes="100vw">
+      <source type="image/webp" srcset="/art/harbor-closeout-960.webp 960w, /art/harbor-closeout-1536.webp 1536w" sizes="100vw">
+      <img src="/art/harbor-closeout-1536.jpg" width="1536" height="1024" alt="A quiet harbor seen from a dark operations room, with a closed document case ready for handoff" fetchpriority="high" decoding="async">
     </picture>
     <div class="welcome-copy">
       <span class="eyebrow">Local-first closeout workspace</span>
