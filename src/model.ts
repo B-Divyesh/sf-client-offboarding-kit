@@ -97,9 +97,9 @@ export function createDemoPacket(): Packet {
   packet.closeoutDate = '2026-08-28';
   packet.summary = 'New public website, event archive, and editor guide delivered for the autumn programme.';
   packet.assets = [
-    { id: 'demo-repo', name: 'Production repository', kind: 'Source code', url: 'https://github.com/example/northstar-site', currentOwner: 'Tideway Web Studio', destinationOwner: 'Northstar Arts Council', note: 'Deployment guide is in /docs/operations.md.' },
-    { id: 'demo-host', name: 'Production hosting', kind: 'Hosting', url: 'https://example.com/northstar-hosting', currentOwner: 'Tideway Web Studio', destinationOwner: 'Northstar Arts Council', note: 'Billing owner changes after the client accepts the invitation.' },
-    { id: 'demo-domain', name: 'northstar-arts.example', kind: 'Domain & DNS', url: 'https://example.com/northstar-domain', currentOwner: 'Northstar Arts Council', destinationOwner: 'Northstar Arts Council', note: 'Registrar remains with the client.' }
+    { id: 'demo-repo', name: 'Production repository', kind: 'Source code', url: 'https://github.com/', currentOwner: 'Tideway Web Studio', destinationOwner: 'Northstar Arts Council', note: 'Sample provider link. Deployment guide is in /docs/operations.md.' },
+    { id: 'demo-host', name: 'Production hosting', kind: 'Hosting', url: 'https://www.netlify.com/', currentOwner: 'Tideway Web Studio', destinationOwner: 'Northstar Arts Council', note: 'Sample provider link. Billing owner changes after the client accepts the invitation.' },
+    { id: 'demo-domain', name: 'northstar-arts.example', kind: 'Domain & DNS', url: 'https://www.cloudflare.com/products/registrar/', currentOwner: 'Northstar Arts Council', destinationOwner: 'Northstar Arts Council', note: 'Sample provider link. Registrar remains with the client.' }
   ];
   packet.actions = [
     { id: 'demo-transfer', action: 'Transfer repository ownership', system: 'Code host', responsible: 'Maya Chen', due: '2026-08-29', status: 'complete', confirmedExternal: true },

@@ -1,6 +1,6 @@
 {
   "name": "client-offboarding-kit",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,6 +8,7 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "vitest run && npm run build && playwright test --project=chromium",
+    "pretest:claims": "npm run build",
     "test:claims": "playwright test --project=chromium --grep @claim"
   },
   "devDependencies": {

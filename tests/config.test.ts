@@ -28,6 +28,20 @@ describe('production delivery configuration', () => {
     expect(routes).toEqual(expect.arrayContaining(['/demo', '/packet/engagement', '/packet/assets', '/packet/access-tasks', '/packet/support', '/packet/acknowledgement', '/packet/export']));
   });
 
+  it('lists every public app route in the sitemap', () => {
+    const sitemap = readFileSync('public/sitemap.xml', 'utf8');
+    for (const route of ['/', '/demo', '/packet/engagement', '/packet/assets', '/packet/access-tasks', '/packet/support', '/packet/acknowledgement', '/packet/export', '/privacy/', '/terms/']) {
+      expect(sitemap).toContain(`https://client-offboarding-kit.sociobot.in${route}`);
+    }
+  });
+
+  it('gives the 404 page complete sharing metadata', () => {
+    const notFound = readFileSync('404.html', 'utf8');
+    expect(notFound).toContain('property="og:image"');
+    expect(notFound).toContain('name="twitter:card"');
+    expect(notFound).toContain('Page not found — Closeout Kit');
+  });
+
   it('does not precache a URL that intentionally responds with 404', () => {
     const serviceWorker = readFileSync('public/sw.js', 'utf8');
     expect(serviceWorker).not.toContain("'/404.html'");

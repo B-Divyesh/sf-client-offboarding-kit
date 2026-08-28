@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://client-offboarding-kit.sociobot.in/</loc></url>
   <url><loc>https://client-offboarding-kit.sociobot.in/demo</loc></url>
+  <url><loc>https://client-offboarding-kit.sociobot.in/packet/engagement</loc></url>
+  <url><loc>https://client-offboarding-kit.sociobot.in/packet/assets</loc></url>
+  <url><loc>https://client-offboarding-kit.sociobot.in/packet/access-tasks</loc></url>
+  <url><loc>https://client-offboarding-kit.sociobot.in/packet/support</loc></url>
+  <url><loc>https://client-offboarding-kit.sociobot.in/packet/acknowledgement</loc></url>
+  <url><loc>https://client-offboarding-kit.sociobot.in/packet/export</loc></url>
   <url><loc>https://client-offboarding-kit.sociobot.in/privacy/</loc></url>
   <url><loc>https://client-offboarding-kit.sociobot.in/terms/</loc></url>
 </urlset>

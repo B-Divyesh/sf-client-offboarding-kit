@@ -1,1 +1,1 @@
-Build client handoff packets with asset owners, access tasks, support dates, and acknowledgement.
+Build a client handoff packet with owners, access checks, support terms, and acknowledgement.

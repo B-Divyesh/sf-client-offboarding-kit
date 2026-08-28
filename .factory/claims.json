@@ -1,10 +1,10 @@
 [
   {
     "id": "demo-isolation",
-    "claim": "The sample stays separate from real packets and is discarded when you start for real.",
+    "claim": "The sample stays separate from real packets, Reset restores it, and Start for real discards it.",
     "where": "landing page, demo banner, README",
     "test": "npm run test:claims -- --grep @claim:demo-isolation",
-    "sandbox": "fresh browser; create a real packet, edit the sample, leave demo, unlock real packet, and inspect database names"
+    "sandbox": "fresh browser; create a real packet, edit and reset the sample, edit again, leave demo, unlock the real packet, and inspect database names"
   },
   {
     "id": "encrypted-storage",
@@ -25,7 +25,7 @@
     "claim": "No product account or analytics; packet content stays in the browser until a file is exported.",
     "where": "privacy page, README",
     "test": "npm run test:claims -- --grep @claim:private-network",
-    "sandbox": "fresh demo; record the full request log and assert same-origin requests and no account fields"
+    "sandbox": "fresh demo; visit every stage, export, inspect every URL, method, and body for packet text, and assert no account fields"
   },
   {
     "id": "credential-rejection",
@@ -53,14 +53,14 @@
     "claim": "Encrypted JSON backups can restore a packet.",
     "where": "export stage, privacy page, README",
     "test": "npm run test:claims -- --grep @claim:backup-roundtrip",
-    "sandbox": "fresh demo; download backup, edit sample, import backup, and compare restored project"
+    "sandbox": "fresh demo; decrypt a baseline, download backup, edit sample, import it, and deep-compare every restored packet field"
   },
   {
     "id": "acknowledgement-receipt",
     "claim": "A client can create a small acknowledgement receipt file that imports into its packet.",
     "where": "how it works, acknowledgement stage, privacy page, README",
     "test": "npm run test:claims -- --grep @claim:acknowledgement-receipt",
-    "sandbox": "fresh demo; inspect exported form, import matching receipt fixture, and assert acknowledged state"
+    "sandbox": "fresh demo; export and run the client form, download its receipt, import that exact file, and assert acknowledged state"
   },
   {
     "id": "workflow-boundaries",

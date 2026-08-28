@@ -13,7 +13,7 @@ Try the isolated sample: <https://client-offboarding-kit.sociobot.in/demo>
 - Collect project details, assets, owners, account tasks, support dates, and acknowledgement.
 - Require confirmation of each access task in the original service.
 - Reject common password, API-token, and private-key patterns.
-- Encrypt packets in the browser before saving them in IndexedDB.
+- Encrypt packets in the browser before saving them in browser storage (technical: IndexedDB).
 - Download a client HTML packet, an encrypted backup, and a client acknowledgement form.
 - Import encrypted backups and client acknowledgement receipts.
 - Keep working offline after the first visit.
@@ -22,7 +22,7 @@ The app does not move accounts, host files, migrate a CMS, or test client access
 
 Complete those actions in the original hosting, domain, CMS, or account service.
 
-Every statement above maps to a tagged browser test in [`.factory/claims.json`](.factory/claims.json).
+Every customer-facing statement above maps to one tagged browser test in [`.factory/claims.json`](.factory/claims.json).
 
 ## Try the sample
 
@@ -30,7 +30,7 @@ Open `/demo` or `/?demo=1` to load the filled Northstar Arts website packet.
 
 The banner identifies sample mode. “Reset demo” restores the sample, and “Start for real” removes sample storage.
 
-Sample data uses the separate `demo:closeout-kit-v1` IndexedDB database. It never reads or writes `closeout-kit-v1`.
+The sample uses separate browser storage (technical name: `demo:closeout-kit-v1`). It never reads or writes `closeout-kit-v1`.
 
 See [`.factory/demo.md`](.factory/demo.md) for the sample contents and reset contract.
 
@@ -53,7 +53,7 @@ npm run test:claims
 npm run build
 ```
 
-`npm test` runs unit tests and creates a production build. It also checks Chromium flows, accessibility, mobile layout, exports, and offline reload.
+`npm test` runs unit tests and creates a production build. The tests open the app in Chromium and check accessibility, phone layout, exports, and offline use.
 
 The build output is `dist/`, with `dist/index.html` at its root.
 
@@ -65,7 +65,7 @@ Deploy `dist/` as an Azure Static Web App. The factory work order uses:
 /opt/fleet/lib/deploy-static.sh client-offboarding-kit dist
 ```
 
-`staticwebapp.config.json` supplies route rewrites, the 404 response, security headers, cache rules, and manifest MIME type.
+The hosting file keeps app URLs, the 404 page, security headers, caches, and web-app manifest delivery working.
 
 ## Privacy and recovery
 
