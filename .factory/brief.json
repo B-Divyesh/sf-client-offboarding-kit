@@ -1,0 +1,10 @@
+{
+  "slug": "client-offboarding-kit",
+  "title": "Closeout Kit",
+  "territory": "utilities",
+  "user": "A freelance developer or web studio finishing a client engagement who needs a clear, non-secret handoff of assets, ownership, access actions, and client acknowledgement.",
+  "smallest_useful_product": "Local wizard for asset list, owners, links, transfer/revoke actions, support window, and client acknowledgement; exports a static HTML/PDF packet.",
+  "artifact_class": "pwa-offline",
+  "monetization": "one-time",
+  "constraints": "Never collect passwords, API keys, or private keys; include explicit confirmation of external transfer actions; retain only local encrypted packets."
+}
