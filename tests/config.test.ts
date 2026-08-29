@@ -46,4 +46,22 @@ describe('production delivery configuration', () => {
     const serviceWorker = readFileSync('public/sw.js', 'utf8');
     expect(serviceWorker).not.toContain("'/404.html'");
   });
+
+  it('maps every registered product claim to exactly one tagged browser test', () => {
+    const claims = JSON.parse(readFileSync('.factory/claims.json', 'utf8')) as Array<{ id: string; test: string }>;
+    const browserTests = readFileSync('tests/e2e/app.spec.ts', 'utf8');
+    const tags = [...browserTests.matchAll(/@claim:([a-z0-9-]+)/g)].map((match) => match[1]);
+    expect(new Set(claims.map((claim) => claim.id)).size).toBe(claims.length);
+    expect(tags).toHaveLength(claims.length);
+    for (const claim of claims) {
+      expect(tags.filter((tag) => tag === claim.id)).toHaveLength(1);
+      expect(claim.test).toBe(`npm run test:claims -- --grep @claim:${claim.id}`);
+    }
+  });
+
+  it('keeps the catalog description verb-first and within 120 characters', () => {
+    const description = readFileSync('.factory/catalog-description.txt', 'utf8').trim();
+    expect(description).toMatch(/^(Build|Create|Make|Turn)\b/);
+    expect(description.length).toBeLessThanOrEqual(120);
+  });
 });

@@ -66,7 +66,7 @@ function shell(content: string): string {
   </header>
   ${notice ? `<div class="toast ${noticeKind}" role="status">${value(notice)}</div>` : ''}
   <div id="route-announcer" class="sr-only" aria-live="polite"></div><main id="main">${content}</main>
-  <footer><p><strong>Closeout Kit</strong> builds client handoff packets. Packet data is encrypted before this browser saves it.</p><nav aria-label="Footer"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="https://github.com/B-Divyesh/sf-client-offboarding-kit" rel="noreferrer">Source <span class="sr-only">(opens externally)</span></a></nav><p>Built by Param Factory · Build 1.2.1 · Generated artwork</p></footer>
+  <footer><p><strong>Closeout Kit</strong> builds client handoff packets. Packet data is encrypted before this browser saves it.</p><nav aria-label="Footer"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="https://github.com/B-Divyesh/sf-client-offboarding-kit" rel="noreferrer">Source <span class="sr-only">(opens externally)</span></a></nav><p>Built by Param Factory · Build 1.2.2 · Generated artwork</p></footer>
   ${packetLibraryDialog()}`;
 }
 
@@ -188,12 +188,12 @@ function packetLibraryDialog(): string {
 }
 
 const stageTitles = [
-  'Engagement — Closeout Kit',
-  'Assets — Closeout Kit',
-  'Access tasks — Closeout Kit',
-  'Support — Closeout Kit',
-  'Acknowledgement — Closeout Kit',
-  'Export — Closeout Kit'
+  'Closeout Kit — describe the finished project',
+  'Closeout Kit — list assets and owners',
+  'Closeout Kit — confirm account changes',
+  'Closeout Kit — set support dates',
+  'Closeout Kit — collect a client receipt',
+  'Closeout Kit — download the client packet'
 ];
 
 const demoStageTitles = [

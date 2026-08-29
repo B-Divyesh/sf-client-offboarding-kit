@@ -308,6 +308,48 @@ test('every demo route uses a product-first title and matching share metadata', 
   }
 });
 
+test('every real packet route uses a product-first title and matching route metadata', async ({ page }) => {
+  const titles: Record<string, string> = {
+    engagement: 'Closeout Kit — describe the finished project',
+    assets: 'Closeout Kit — list assets and owners',
+    'access-tasks': 'Closeout Kit — confirm account changes',
+    support: 'Closeout Kit — set support dates',
+    acknowledgement: 'Closeout Kit — collect a client receipt',
+    export: 'Closeout Kit — download the client packet'
+  };
+  const headings: Record<string, string> = {
+    engagement: 'Describe the finished project.',
+    assets: 'List assets and owners.',
+    'access-tasks': 'Confirm account changes.',
+    support: 'Set the support period.',
+    acknowledgement: 'Collect the client’s receipt.',
+    export: 'Download a marked draft.'
+  };
+  const passphrase = 'real-route-metadata-2026';
+
+  await page.goto('/');
+  await page.getByLabel('Create a packet passphrase').fill(passphrase);
+  await page.getByLabel('Confirm passphrase').fill(passphrase);
+  await page.getByRole('button', { name: /Create your packet/ }).click();
+  await expect(page).toHaveURL('/packet/engagement');
+  await expect(page.locator('.save-state')).toHaveText('Encrypted and saved');
+
+  for (const [stage, title] of Object.entries(titles)) {
+    const route = `/packet/${stage}`;
+    const canonical = `https://client-offboarding-kit.sociobot.in${route}`;
+    await page.goto(route);
+    await page.getByLabel('Packet passphrase').fill(passphrase);
+    await page.getByRole('button', { name: /Unlock your packet/ }).click();
+    await expect(page).toHaveURL(route);
+    await expect(page).toHaveTitle(title);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', canonical);
+    await expect(page.locator('meta[property="og:url"]')).toHaveAttribute('content', canonical);
+    await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', title);
+    await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute('content', title);
+    await expect(page.getByRole('heading', { name: headings[stage] })).toBeFocused();
+  }
+});
+
 test('metadata, shared links, and the styled 404 are complete', async ({ page }) => {
   for (const route of ['/', '/privacy/', '/terms/', '/demo']) {
     await page.goto(route);

@@ -1,6 +1,6 @@
 # Copy audit
 
-Audited 28 August 2026. Word counts use whitespace-delimited words. Commands and file paths are excluded.
+Audited 29 August 2026. Word counts use whitespace-delimited words. Commands and file paths are excluded.
 
 No line exceeds 22 words. No banned term appears; “unlock” is used only for the literal action that opens an encrypted packet.
 
@@ -64,6 +64,18 @@ The demo banner adds these lines:
 | 6 | Changes stay separate from your packets. | Pass |
 | 2 | Reset demo | Pass |
 | 3 | Start for real | Pass |
+
+## Route titles and catalog
+
+| Words | Copy | Result |
+| ---: | --- | --- |
+| 7 | Closeout Kit — describe the finished project | Pass |
+| 7 | Closeout Kit — list assets and owners | Pass |
+| 7 | Closeout Kit — confirm account changes | Pass |
+| 7 | Closeout Kit — set support dates | Pass |
+| 8 | Closeout Kit — collect a client receipt | Pass |
+| 8 | Closeout Kit — download the client packet | Pass |
+| 13 | Build client handoff packets with asset owners, access checks, support dates, and acknowledgement. | Pass — verb-first, 98 characters |
 
 ## README
 
