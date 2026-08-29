@@ -1,0 +1,137 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "contentType": "text/html",
+    "cacheControl": "public, must-revalidate, max-age=30",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'",
+    "frameOptions": "DENY",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  },
+  {
+    "path": "/demo",
+    "status": 200,
+    "contentType": "text/html",
+    "cacheControl": "public, must-revalidate, max-age=30",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'",
+    "frameOptions": "DENY",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  },
+  {
+    "path": "/packet/engagement",
+    "status": 200,
+    "contentType": "text/html",
+    "cacheControl": "public, must-revalidate, max-age=30",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'",
+    "frameOptions": "DENY",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  },
+  {
+    "path": "/packet/assets",
+    "status": 200,
+    "contentType": "text/html",
+    "cacheControl": "public, must-revalidate, max-age=30",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'",
+    "frameOptions": "DENY",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  },
+  {
+    "path": "/packet/access-tasks",
+    "status": 200,
+    "contentType": "text/html",
+    "cacheControl": "public, must-revalidate, max-age=30",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'",
+    "frameOptions": "DENY",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  },
+  {
+    "path": "/packet/support",
+    "status": 200,
+    "contentType": "text/html",
+    "cacheControl": "public, must-revalidate, max-age=30",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'",
+    "frameOptions": "DENY",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  },
+  {
+    "path": "/packet/acknowledgement",
+    "status": 200,
+    "contentType": "text/html",
+    "cacheControl": "public, must-revalidate, max-age=30",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'",
+    "frameOptions": "DENY",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  },
+  {
+    "path": "/packet/export",
+    "status": 200,
+    "contentType": "text/html",
+    "cacheControl": "public, must-revalidate, max-age=30",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'",
+    "frameOptions": "DENY",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  },
+  {
+    "path": "/privacy/",
+    "status": 200,
+    "contentType": "text/html",
+    "cacheControl": "public, must-revalidate, max-age=30",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'",
+    "frameOptions": "DENY",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  },
+  {
+    "path": "/terms/",
+    "status": 200,
+    "contentType": "text/html",
+    "cacheControl": "public, must-revalidate, max-age=30",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'",
+    "frameOptions": "DENY",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  },
+  {
+    "path": "/not-a-real-route",
+    "status": 404,
+    "contentType": "text/html",
+    "cacheControl": "public, must-revalidate, max-age=30",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'",
+    "frameOptions": "DENY",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  },
+  {
+    "path": "/404.html",
+    "status": 404,
+    "contentType": "text/html",
+    "cacheControl": "public, must-revalidate, max-age=30",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'",
+    "frameOptions": "DENY",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  },
+  {
+    "path": "/manifest.webmanifest",
+    "status": 200,
+    "contentType": "application/manifest+json",
+    "cacheControl": "public, max-age=3600, must-revalidate",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'",
+    "frameOptions": "DENY",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  },
+  {
+    "path": "/sw.js",
+    "status": 200,
+    "contentType": "text/javascript",
+    "cacheControl": "no-cache, no-store, must-revalidate",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'",
+    "frameOptions": "DENY",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  },
+  {
+    "path": "/assets/main-5xetqIKv.js",
+    "status": 200,
+    "contentType": "text/javascript",
+    "cacheControl": "public, max-age=31536000, immutable",
+    "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'",
+    "frameOptions": "DENY",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  }
+]

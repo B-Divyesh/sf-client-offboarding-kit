@@ -1,0 +1,68 @@
+[
+  {
+    "path": "/packet/engagement",
+    "title": "Closeout Kit — describe the finished project",
+    "canonical": "https://client-offboarding-kit.sociobot.in/packet/engagement",
+    "ogUrl": "https://client-offboarding-kit.sociobot.in/packet/engagement",
+    "ogTitle": "Closeout Kit — describe the finished project",
+    "twitterTitle": "Closeout Kit — describe the finished project",
+    "h1": "Describe the finished project.",
+    "focusedTag": "H1",
+    "focusedText": "Describe the finished project."
+  },
+  {
+    "path": "/packet/assets",
+    "title": "Closeout Kit — list assets and owners",
+    "canonical": "https://client-offboarding-kit.sociobot.in/packet/assets",
+    "ogUrl": "https://client-offboarding-kit.sociobot.in/packet/assets",
+    "ogTitle": "Closeout Kit — list assets and owners",
+    "twitterTitle": "Closeout Kit — list assets and owners",
+    "h1": "List assets and owners.",
+    "focusedTag": "H1",
+    "focusedText": "List assets and owners."
+  },
+  {
+    "path": "/packet/access-tasks",
+    "title": "Closeout Kit — confirm account changes",
+    "canonical": "https://client-offboarding-kit.sociobot.in/packet/access-tasks",
+    "ogUrl": "https://client-offboarding-kit.sociobot.in/packet/access-tasks",
+    "ogTitle": "Closeout Kit — confirm account changes",
+    "twitterTitle": "Closeout Kit — confirm account changes",
+    "h1": "Confirm account changes.",
+    "focusedTag": "H1",
+    "focusedText": "Confirm account changes."
+  },
+  {
+    "path": "/packet/support",
+    "title": "Closeout Kit — set support dates",
+    "canonical": "https://client-offboarding-kit.sociobot.in/packet/support",
+    "ogUrl": "https://client-offboarding-kit.sociobot.in/packet/support",
+    "ogTitle": "Closeout Kit — set support dates",
+    "twitterTitle": "Closeout Kit — set support dates",
+    "h1": "Set the support period.",
+    "focusedTag": "H1",
+    "focusedText": "Set the support period."
+  },
+  {
+    "path": "/packet/acknowledgement",
+    "title": "Closeout Kit — collect a client receipt",
+    "canonical": "https://client-offboarding-kit.sociobot.in/packet/acknowledgement",
+    "ogUrl": "https://client-offboarding-kit.sociobot.in/packet/acknowledgement",
+    "ogTitle": "Closeout Kit — collect a client receipt",
+    "twitterTitle": "Closeout Kit — collect a client receipt",
+    "h1": "Collect the client’s receipt.",
+    "focusedTag": "H1",
+    "focusedText": "Collect the client’s receipt."
+  },
+  {
+    "path": "/packet/export",
+    "title": "Closeout Kit — download the client packet",
+    "canonical": "https://client-offboarding-kit.sociobot.in/packet/export",
+    "ogUrl": "https://client-offboarding-kit.sociobot.in/packet/export",
+    "ogTitle": "Closeout Kit — download the client packet",
+    "twitterTitle": "Closeout Kit — download the client packet",
+    "h1": "Download a marked draft.",
+    "focusedTag": "H1",
+    "focusedText": "Download a marked draft."
+  }
+]
