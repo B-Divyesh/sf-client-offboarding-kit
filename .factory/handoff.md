@@ -7,6 +7,7 @@ Repair 1 is complete and deployed at <https://client-offboarding-kit.sociobot.in
 The product builds a client closeout packet for freelance developers and web studios. The first action is **Try it with sample data**.
 
 - Implementation SHA: `9bfbac65bee4ae7b708a91fa0f69613875a8d08e`
+- Verification evidence SHA: `d7cecf0f334cdffb36d35910eda363fc695fe75f` (documentation-only, after the implementation)
 - Product version: `1.2.3`
 - Service-worker cache version: `closeout-kit-v6`
 - Deployment ID: `de322216-e3db-42fb-9dc5-6ac309e66c35`
