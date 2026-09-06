@@ -1,17 +1,17 @@
-# Closeout Kit — review 5 handoff
+# Closeout Kit — review 6 handoff
 
 ## Outcome
 
-Independent adversarial review 5 passed with zero findings. This review made no product-code changes. It added the review record and replaced this handoff with current verification evidence.
+Independent review 6 made no product-code changes. The result is **FAIL**: one public update promise is not listed or tested as a claim. See `.factory/review-6.md`.
 
 ## Verification
 
-- Fresh live 390 × 844 and 1440 × 900 first reads clearly identify the job, audience, and first action.
-- Live `/demo` immediately showed realistic Northstar Arts sample data, isolated it in `demo:closeout-kit-v1`, reset it successfully, and showed the required demo banner/actions.
-- A fresh-clone checkout at `/tmp/client-offboarding-kit-review-5.B1YmPA/repo` passed `npm ci`, all 13 exact registered claim commands, `npm test`, and `npm run build`.
-- The live-origin Playwright suite passed 22/22 tests, including all claims, offline reload/export, route metadata/history/focus, touch targets, and Axe serious/critical checks.
-- Live crawl: root, demo, six packet routes, legal pages, manifest, Source, and all three sample-provider links returned 200. Unknown routes correctly returned the designed HTTP 404.
-- Live headers confirmed CSP/frame denial, nosniff, referrer and permissions policy; manifest MIME; immutable hashed assets; and no-store service worker.
+- Fresh live 390 × 844 and 1440 × 900 reads clearly identify the job, audience, and first action.
+- Live demo has the filled Northstar Arts sample, the persistent sample label, reset, exit, encrypted isolated storage, offline reload/export, and client receipt/backup workflows.
+- A new clean clone at `/tmp/client-offboarding-kit-review-6.BHu5PK/repo` passed `npm ci`, all 13 separately invoked registered claim commands, `npm test`, and `npm run build`.
+- The live-origin Playwright suite passed its 22 tests, including claims, accessibility, keyboard landmarks, mobile targets, route metadata/history/focus, and Axe serious/critical checks.
+- The supplied URL verifier passed with zero console errors and confirmed title, language, main, image alt text, and button labels. Routes, headers, 404, manifest, service worker, sitemap, and sample provider links were checked live.
+- The live hashed JS/CSS names exactly match implementation `25b522f`. Documentation SHA is `2ea581b`.
 
 ## Run and verify
 
@@ -23,6 +23,6 @@ npm run build
 PLAYWRIGHT_BASE_URL=https://client-offboarding-kit.sociobot.in npx playwright test --project=chromium
 ```
 
-## Known gaps and next steps
+## Remaining work
 
-None. Future releases should repeat the clean-clone claims, live crawl, and phone cold-read checks recorded in `.factory/review-5.md`.
+Register and test the conditional “A new version is ready / Reload and update” service-worker behavior, or remove that promise. A test must create a waiting worker, invoke the control, and verify controller change and reload. Then rerun its exact clean-clone claim command and this review loop.
