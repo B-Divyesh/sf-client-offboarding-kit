@@ -1,4 +1,4 @@
-const VERSION = 'closeout-kit-v5';
+const VERSION = 'closeout-kit-v6';
 const SHELL = `${VERSION}-shell`;
 const RUNTIME = `${VERSION}-runtime`;
 const CORE = [

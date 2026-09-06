@@ -17,6 +17,7 @@ Try the isolated sample: <https://client-offboarding-kit.sociobot.in/demo>
 - Download a client HTML packet, an encrypted backup, and a client acknowledgement form.
 - Import encrypted backups and client acknowledgement receipts.
 - Keep working offline after the first visit.
+- Ask before reloading when an app update is ready.
 - Create and export a packet without purchase.
 
 The app does not move accounts, host files, migrate a CMS, or test client access.
@@ -54,7 +55,7 @@ npm run test:claims
 npm run build
 ```
 
-`npm test` runs unit tests and creates a production build. The tests open the app in Chromium and check accessibility, phone layout, exports, and offline use.
+`npm test` runs unit tests and creates a production build. The tests open the app in Chromium and check accessibility, phone layout, exports, offline use, and app updates.
 
 The build output is `dist/`, with `dist/index.html` at its root.
 

@@ -1,6 +1,6 @@
 # Copy audit
 
-Audited 29 August 2026. Word counts use whitespace-delimited words. Commands and file paths are excluded.
+Audited 6 September 2026. Word counts use whitespace-delimited words. Commands and file paths are excluded.
 
 No line exceeds 22 words. No banned term appears; “unlock” is used only for the literal action that opens an encrypted packet.
 
@@ -90,6 +90,7 @@ The demo banner adds these lines:
 | 12 | Download a client HTML packet, an encrypted backup, and a client acknowledgement form. | Pass |
 | 7 | Import encrypted backups and client acknowledgement receipts. | Pass |
 | 7 | Keep working offline after the first visit. | Pass |
+| 9 | Ask before reloading when an app update is ready. | Pass |
 | 7 | Create and export a packet without purchase. | Pass |
 | 14 | The app does not move accounts, host files, migrate a CMS, or test client access. | Pass |
 | 11 | Complete those actions in the original hosting, domain, CMS, or account service. | Pass |
@@ -97,7 +98,7 @@ The demo banner adds these lines:
 | 9 | The sample uses separate browser storage (technical name: `demo:closeout-kit-v1`). | Pass |
 | 8 | It never reads or writes `closeout-kit-v1`. | Pass |
 | 15 | `npm test` runs unit tests and creates a production build. | Pass |
-| 15 | The tests open the app in Chromium and check accessibility, phone layout, exports, and offline use. | Pass |
+| 18 | The tests open the app in Chromium and check accessibility, phone layout, exports, offline use, and app updates. | Pass |
 | 12 | Every customer-facing statement above maps to one tagged browser test in `.factory/claims.json`. | Pass |
 | 15 | The hosting file keeps app URLs, the 404 page, security headers, caches, and web-app manifest delivery working. | Pass |
 | 8 | Closeout Kit has no analytics or product account. | Pass |

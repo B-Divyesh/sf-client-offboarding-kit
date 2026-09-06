@@ -86,16 +86,69 @@ test('@claim:encrypted-storage saves only an encrypted envelope', async ({ page 
   expect(stored).not.toContain('sample-packet-only-2026');
 });
 
-test('@claim:offline-reload opens, edits, and exports the sample offline', async ({ page, context }) => {
-  await openDemo(page, 'export');
-  await page.evaluate(() => navigator.serviceWorker.ready);
-  await page.reload();
-  await context.setOffline(true);
-  await page.reload();
-  await expect(page.getByText(/Offline · changes still save here/)).toBeVisible();
-  const downloadPromise = page.waitForEvent('download');
-  await page.getByRole('button', { name: /Download client packet/ }).click();
-  expect((await downloadPromise).suggestedFilename()).toBe('northstar-arts-website.html');
+test('@claim:offline-reload opens, edits, and exports the sample offline', async ({ browser }, testInfo) => {
+  const context = await browser.newContext({ baseURL: String(testInfo.project.use.baseURL) });
+  const page = await context.newPage();
+  try {
+    await openDemo(page, 'export');
+    await page.evaluate(() => navigator.serviceWorker.ready);
+    await page.reload();
+    await context.setOffline(true);
+    await page.reload();
+    await expect(page.getByText(/Offline · changes still save here/)).toBeVisible();
+    const downloadPromise = page.waitForEvent('download');
+    await page.getByRole('button', { name: /Download client packet/ }).click();
+    expect((await downloadPromise).suggestedFilename()).toBe('northstar-arts-website.html');
+  } finally {
+    await context.close();
+  }
+});
+
+test('@claim:update-reload waits for confirmation, activates the update, and reloads', async ({ browser }, testInfo) => {
+  const workerSource = await (await import('node:fs/promises')).readFile('dist/sw.js', 'utf8');
+  const updatedWorkerSource = `${workerSource}\n// Byte-distinct browser update fixture.\n`;
+
+  const context = await browser.newContext({
+    baseURL: String(testInfo.project.use.baseURL),
+    serviceWorkers: 'allow'
+  });
+  await context.route('**/sw.js?claim-update=1', (route) => route.fulfill({
+    status: 200,
+    contentType: 'application/javascript',
+    headers: { 'Cache-Control': 'no-store' },
+    body: updatedWorkerSource
+  }));
+  const page = await context.newPage();
+
+  try {
+    await page.goto('/');
+    await page.evaluate(() => navigator.serviceWorker.ready);
+    await page.reload();
+    await expect(page.getByRole('heading', { name: 'Build a client closeout packet.' })).toBeVisible();
+    await page.waitForFunction(async () => {
+      const registration = await navigator.serviceWorker.getRegistration('/');
+      return Boolean(navigator.serviceWorker.controller && registration?.active && !registration.installing && !registration.waiting);
+    });
+    const controllerBefore = await page.evaluate(() => navigator.serviceWorker.controller?.scriptURL);
+
+    await page.evaluate(() => navigator.serviceWorker.register('/sw.js?claim-update=1', { scope: '/' }));
+    await expect(page.getByText('A new version is ready.')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Reload and update' })).toBeVisible();
+    expect(await page.evaluate(() => navigator.serviceWorker.controller?.scriptURL)).toBe(controllerBefore);
+
+    const reload = page.waitForEvent('framenavigated', (frame) => frame === page.mainFrame());
+    await page.getByRole('button', { name: 'Reload and update' }).click();
+    await reload;
+    await page.waitForLoadState('domcontentloaded');
+
+    const controllerAfter = await page.evaluate(() => navigator.serviceWorker.controller?.scriptURL);
+    expect(controllerAfter).not.toBe(controllerBefore);
+    expect(controllerAfter).toContain('/sw.js?claim-update=1');
+    expect(await page.evaluate(() => (performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined)?.type)).toBe('reload');
+    await expect(page.getByRole('heading', { name: 'Build a client closeout packet.' })).toBeVisible();
+  } finally {
+    await context.close();
+  }
 });
 
 test('@claim:private-network keeps packet content out of every request', async ({ page }) => {

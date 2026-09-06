@@ -66,7 +66,7 @@ function shell(content: string): string {
   </header>
   ${notice ? `<div class="toast ${noticeKind}" role="status">${value(notice)}</div>` : ''}
   <div id="route-announcer" class="sr-only" aria-live="polite"></div><main id="main">${content}</main>
-  <footer><p><strong>Closeout Kit</strong> builds client handoff packets. Packet data is encrypted before this browser saves it.</p><nav aria-label="Footer"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="https://github.com/B-Divyesh/sf-client-offboarding-kit" rel="noreferrer">Source <span class="sr-only">(opens externally)</span></a></nav><p>Built by Param Factory · Build 1.2.2 · Generated artwork</p></footer>
+  <footer><p><strong>Closeout Kit</strong> builds client handoff packets. Packet data is encrypted before this browser saves it.</p><nav aria-label="Footer"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="https://github.com/B-Divyesh/sf-client-offboarding-kit" rel="noreferrer">Source <span class="sr-only">(opens externally)</span></a></nav><p>Built by Param Factory · Build 1.2.3 · Generated artwork</p></footer>
   ${packetLibraryDialog()}`;
 }
 
@@ -483,13 +483,29 @@ async function registerServiceWorker(): Promise<void> {
       toast.className = 'toast update-toast';
       toast.setAttribute('role', 'status');
       toast.innerHTML = '<span>A new version is ready.</span><button type="button">Reload and update</button>';
-      toast.querySelector('button')?.addEventListener('click', () => { applyUpdate = true; registration.waiting?.postMessage({ type: 'SKIP_WAITING' }); });
+      toast.querySelector('button')?.addEventListener('click', (event) => {
+        const waitingWorker = registration.waiting;
+        if (!waitingWorker) return;
+        applyUpdate = true;
+        const button = event.currentTarget as HTMLButtonElement;
+        button.disabled = true;
+        button.textContent = 'Updating…';
+        waitingWorker.postMessage({ type: 'SKIP_WAITING' });
+      });
       document.querySelector('.topbar')?.after(toast);
     };
     if (registration.waiting) offerUpdate();
-    registration.addEventListener('updatefound', () => registration.installing?.addEventListener('statechange', () => {
-      if (registration.waiting && navigator.serviceWorker.controller) offerUpdate();
-    }));
+    const watchInstallingWorker = () => {
+      const installingWorker = registration.installing;
+      if (!installingWorker) return;
+      const checkState = () => {
+        if (installingWorker.state === 'installed' && registration.waiting && navigator.serviceWorker.controller) offerUpdate();
+      };
+      installingWorker.addEventListener('statechange', checkState);
+      checkState();
+    };
+    watchInstallingWorker();
+    registration.addEventListener('updatefound', watchInstallingWorker);
     navigator.serviceWorker.addEventListener('controllerchange', () => { if (applyUpdate) location.reload(); });
   } catch { /* The app remains fully usable without install support. */ }
 }

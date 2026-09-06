@@ -21,6 +21,13 @@
     "sandbox": "fresh demo; wait for service worker, reload once, set context offline, reload, and export"
   },
   {
+    "id": "update-reload",
+    "claim": "When an app update is ready, the app asks before reloading it.",
+    "where": "in-app update notice, README",
+    "test": "npm run test:claims -- --grep @claim:update-reload",
+    "sandbox": "fresh browser context; install the current worker, register a controlled waiting worker, confirm no automatic takeover, invoke Reload and update, and verify controller change plus a reload"
+  },
+  {
     "id": "private-network",
     "claim": "No product account or analytics; packet content stays in the browser until a file is exported.",
     "where": "privacy page, README",
