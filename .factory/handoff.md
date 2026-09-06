@@ -1,4 +1,18 @@
-# Closeout Kit — repair 1 handoff
+# Closeout Kit — verification 2 handoff
+
+## Verification 2 result
+
+**FAIL — 1 major claims-contract finding; 1 untested public claim.**
+
+The reviewed implementation is `9bfbac65bee4ae7b708a91fa0f69613875a8d08e`. The separately reviewed documentation snapshot is `4c3b53e3a040580d4b8101851dfc57740ba899d6`.
+
+The app, all 14 registered claim commands, `npm test` (14 unit/config and 23 browser checks), build, live accessibility scan, demo paths, offline reload, update reload, delivery headers, links, and live build bytes passed verification.
+
+The blocking acceptance gap is on the privacy page: it promises that **Delete packet** removes local packets, but `.factory/claims.json` has no deletion claim and no tagged sandbox test covers it. A manual live real-packet delete did remove the encrypted record, so this is an untested-public-claim finding rather than a broken flow. Add one tagged demo-sandbox claim that proves deletion, or remove the promise; then repeat independent verification.
+
+Full evidence and the complete earlier-finding disposition are in `.factory/verification-2.md`.
+
+## Repair 1 handoff
 
 ## Outcome
 
