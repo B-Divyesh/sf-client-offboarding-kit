@@ -15,24 +15,30 @@ No line exceeds 22 words. No banned term appears; “unlock” is used only for 
 | 1 | Demo | Pass |
 | 1 | Privacy | Pass |
 | 1 | Terms | Pass |
-| 6 | Client handoff tool for freelancers and studios | Pass |
-| 6 | Build a client closeout packet. | Pass |
-| 10 | For freelance developers and web studios handing finished projects to clients. | Pass |
+| 6 | Packet data stays in this browser | Pass |
+| 7 | Client handoff tool for freelancers and studios | Pass |
+| 5 | Build a client closeout packet. | Pass |
+| 11 | For freelance developers and web studios handing finished projects to clients. | Pass |
 | 5 | Try it with sample data | Pass |
-| 8 | Opens a filled six-stage packet; your packets stay unchanged. | Pass |
+| 9 | Opens a filled six-stage packet; your packets stay unchanged. | Pass |
 | 4 | Create a packet passphrase | Pass |
 | 2 | Confirm passphrase | Pass |
-| 13 | Use at least 10 characters. Keep the passphrase because the app cannot recover it. | Pass |
+| 14 | Use at least 10 characters. Keep the passphrase because the app cannot recover it. | Pass |
 | 3 | Create your packet | Pass |
 | 3 | Encrypted before saving | Pass |
 | 3 | No purchase required | Pass |
 | 6 | Works offline after the first visit | Pass |
 | 3 | Filled packet preview | Pass |
 | 5 | Preview a filled client packet. | Pass |
-| 13 | The sample shows assets, owners, access tasks, support dates, and acknowledgement in one packet. | Pass |
+| 14 | The sample shows assets, owners, access tasks, support dates, and acknowledgement in one packet. | Pass |
 | 4 | Open the sample packet | Pass |
-| 4 | Six packet stages | Pass |
-| 7 | Complete the packet in six stages. | Pass |
+| 3 | Northstar Arts website | Pass |
+| 2 | 3 assets | Pass |
+| 3 | 2 access tasks | Pass |
+| 4 | Support through 27 September | Pass |
+| 2 | Sample data | Pass |
+| 3 | Six packet stages | Pass |
+| 6 | Complete the packet in six stages. | Pass |
 | 1 | Engagement | Pass |
 | 1 | Assets | Pass |
 | 2 | Access tasks | Pass |
@@ -43,18 +49,21 @@ No line exceeds 22 words. No banned term appears; “unlock” is used only for 
 | 8 | Create and send a packet in three steps. | Pass |
 | 4 | 1. List the project. | Pass |
 | 7 | Add asset links, owners, and support dates. | Pass |
-| 5 | 2. Confirm access tasks. | Pass |
+| 4 | 2. Confirm access tasks. | Pass |
 | 7 | Check each change in the original service. | Pass |
-| 5 | 3. Send the packet. | Pass |
+| 4 | 3. Send the packet. | Pass |
 | 8 | Export the packet and import the client’s receipt. | Pass |
 | 3 | Privacy and limits | Pass |
 | 6 | Keep credentials out of the packet. | Pass |
-| 10 | The app rejects common secret patterns. Share credentials through your password manager. | Pass |
+| 12 | The app rejects common secret patterns. Share credentials through your password manager. | Pass |
 | 14 | It does not move accounts, host files, migrate a CMS, or test client access. | Pass |
-| 11 | Complete those actions in the original hosting, domain, CMS, or account service. | Pass |
+| 12 | Complete those actions in the original hosting, domain, CMS, or account service. | Pass |
+| 6 | Closeout Kit builds client handoff packets. | Pass |
 | 9 | Packet data is encrypted before this browser saves it. | Pass |
-| 5 | Built by Param Factory | Pass |
-| 2 | Generated artwork | Pass |
+| 1 | Source | Pass |
+| 2 | opens externally | Pass |
+| 10 | Built by Param Factory · Build 1.2.3 · Generated artwork | Pass |
+| 17 | A quiet harbor seen from a dark operations room, with a closed document case ready for handoff | Pass |
 
 The demo banner adds these lines:
 
@@ -65,42 +74,56 @@ The demo banner adds these lines:
 | 2 | Reset demo | Pass |
 | 3 | Start for real | Pass |
 
+The conditional update notice adds these lines:
+
+| Words | Copy | Result |
+| ---: | --- | --- |
+| 5 | A new version is ready. | Pass |
+| 3 | Reload and update | Pass |
+| 1 | Updating… | Pass |
+
 ## Route titles and catalog
 
 | Words | Copy | Result |
 | ---: | --- | --- |
 | 7 | Closeout Kit — describe the finished project | Pass |
 | 7 | Closeout Kit — list assets and owners | Pass |
-| 7 | Closeout Kit — confirm account changes | Pass |
-| 7 | Closeout Kit — set support dates | Pass |
-| 8 | Closeout Kit — collect a client receipt | Pass |
-| 8 | Closeout Kit — download the client packet | Pass |
+| 6 | Closeout Kit — confirm account changes | Pass |
+| 6 | Closeout Kit — set support dates | Pass |
+| 7 | Closeout Kit — collect a client receipt | Pass |
+| 7 | Closeout Kit — download the client packet | Pass |
+| 8 | Closeout Kit demo — describe the finished project | Pass |
+| 8 | Closeout Kit demo — list assets and owners | Pass |
+| 7 | Closeout Kit demo — confirm account changes | Pass |
+| 7 | Closeout Kit demo — set support dates | Pass |
+| 8 | Closeout Kit demo — collect a client receipt | Pass |
+| 8 | Closeout Kit demo — download the client packet | Pass |
 | 13 | Build client handoff packets with asset owners, access checks, support dates, and acknowledgement. | Pass — verb-first, 98 characters |
 
 ## README
 
 | Words | Copy | Result |
 | ---: | --- | --- |
-| 14 | Closeout Kit is a browser app for freelance developers and web studios finishing client projects. | Pass |
+| 15 | Closeout Kit is a browser app for freelance developers and web studios finishing client projects. | Pass |
 | 15 | It creates one packet from asset links, owners, access tasks, support dates, and client acknowledgement. | Pass |
-| 12 | Collect project details, assets, owners, account tasks, support dates, and acknowledgement. | Pass |
-| 9 | Require confirmation of each access task in the original service. | Pass |
-| 8 | Reject common password, API-token, and private-key patterns. | Pass |
+| 11 | Collect project details, assets, owners, account tasks, support dates, and acknowledgement. | Pass |
+| 10 | Require confirmation of each access task in the original service. | Pass |
+| 7 | Reject common password, API-token, and private-key patterns. | Pass |
 | 13 | Encrypt packets in the browser before saving them in browser storage (technical: IndexedDB). | Pass |
-| 12 | Download a client HTML packet, an encrypted backup, and a client acknowledgement form. | Pass |
+| 13 | Download a client HTML packet, an encrypted backup, and a client acknowledgement form. | Pass |
 | 7 | Import encrypted backups and client acknowledgement receipts. | Pass |
 | 7 | Keep working offline after the first visit. | Pass |
 | 9 | Ask before reloading when an app update is ready. | Pass |
 | 7 | Create and export a packet without purchase. | Pass |
-| 14 | The app does not move accounts, host files, migrate a CMS, or test client access. | Pass |
-| 11 | Complete those actions in the original hosting, domain, CMS, or account service. | Pass |
-| 17 | Open `/demo` or `/?demo=1` to load the filled Northstar Arts website packet. | Pass |
+| 15 | The app does not move accounts, host files, migrate a CMS, or test client access. | Pass |
+| 12 | Complete those actions in the original hosting, domain, CMS, or account service. | Pass |
+| 12 | Open `/demo` or `/?demo=1` to load the filled Northstar Arts website packet. | Pass |
 | 9 | The sample uses separate browser storage (technical name: `demo:closeout-kit-v1`). | Pass |
-| 8 | It never reads or writes `closeout-kit-v1`. | Pass |
-| 15 | `npm test` runs unit tests and creates a production build. | Pass |
+| 6 | It never reads or writes `closeout-kit-v1`. | Pass |
+| 10 | `npm test` runs unit tests and creates a production build. | Pass |
 | 18 | The tests open the app in Chromium and check accessibility, phone layout, exports, offline use, and app updates. | Pass |
 | 12 | Every customer-facing statement above maps to one tagged browser test in `.factory/claims.json`. | Pass |
-| 15 | The hosting file keeps app URLs, the 404 page, security headers, caches, and web-app manifest delivery working. | Pass |
+| 17 | The hosting file keeps app URLs, the 404 page, security headers, caches, and web-app manifest delivery working. | Pass |
 | 8 | Closeout Kit has no analytics or product account. | Pass |
 | 13 | Packet content stays in the browser unless you export and share a file. | Pass |
 
